@@ -1,0 +1,86 @@
+Sure! Here's the exact text you can **copy and paste into Replit AI** to generate your plug-and-play virtual production portal:
+
+---
+
+**🔽 COPY & PASTE THIS INTO REPLIT AI:**
+
+---
+
+**Project Title:**
+**Plug-and-Play Virtual Production Client Portal**
+
+**Prompt:**
+Build a simple web-based app for **Virtual Media Production**, allowing clients to easily submit creative briefs, select a production package, and receive their cinematic video. The app should simulate a **plug-and-play content pipeline** where the complexity is handled behind the scenes.
+
+---
+
+### ✅ Features & Requirements:
+
+#### 1. **Landing Page (Homepage)**
+
+* Tagline:
+  “Capture Reality. Create Worlds. High-end cinematic videos delivered using motion capture, AI, and virtual production — in just a few simple steps.”
+* Call to Action:
+  “Start Your Project” button
+
+#### 2. **Step-by-Step Submission Wizard**
+
+Split into 3 screens:
+
+* **Step 1: Choose a Service Package**
+
+  * Card or dropdown selection:
+
+    * ✅ Virtual Ad Lite
+    * 🎥 Signature Scene
+    * 🌍 Immersive Experience
+* **Step 2: Upload Content or Describe Project**
+
+  * File upload field (video, image, script)
+  * Input fields: project name, brand, goals
+* **Step 3: Submit & Track**
+
+  * Confirmation screen with Submission ID
+  * Message: “Your cinematic video will be delivered in 5–7 days.”
+
+#### 3. **Admin Dashboard (For Internal Use)**
+
+* View all client submissions
+* Download uploaded media
+* Status tracker: Received → In Production → Delivered
+* Export all submission data as CSV
+
+#### 4. **Backend Logic**
+
+* Store form inputs + uploads (use Replit DB, Firebase, or mock data for now)
+* No login required (MVP phase)
+* (Optional) Simulate email notification to studio team
+
+#### 5. **Design Aesthetic**
+
+* Modern cinematic look
+* Dark mode with rich visuals
+* Use Tailwind CSS or Bootstrap for fast, clean layout
+* Responsive for desktop + mobile
+
+---
+
+### 🛠️ Stack Suggestions:
+
+* **Frontend:** HTML/CSS + JavaScript (or React if preferred)
+* **Backend:** Node.js + Express or Replit DB
+* **File Handling:** Use Replit storage or simulate
+* **Styling:** TailwindCSS or Bootstrap
+
+---
+
+### 🔄 Notes:
+
+* This is **not** a self-service AI app.
+* This is a **structured service portal** for a creative agency.
+* You can mock the backend (no need for file uploads to work yet).
+* Focus on visual clarity, ease of use, and submission flow.
+
+---
+
+Would you like me to also generate the HTML/CSS version of the front-end here for you to preview before sending it over to Replit?
