@@ -71,8 +71,8 @@ export default function AdminDashboard() {
   };
 
   const filteredSubmissions = submissions.filter(submission => {
-    if (statusFilter && submission.status !== statusFilter) return false;
-    if (packageFilter && submission.packageType !== packageFilter) return false;
+    if (statusFilter && statusFilter !== "all" && submission.status !== statusFilter) return false;
+    if (packageFilter && packageFilter !== "all" && submission.packageType !== packageFilter) return false;
     if (dateFilter) {
       const submissionDate = new Date(submission.submissionDate).toISOString().split('T')[0];
       if (submissionDate !== dateFilter) return false;
@@ -225,7 +225,7 @@ export default function AdminDashboard() {
                   <SelectValue placeholder="All Status" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">All Status</SelectItem>
+                  <SelectItem value="all">All Status</SelectItem>
                   <SelectItem value="received">Received</SelectItem>
                   <SelectItem value="in-production">In Production</SelectItem>
                   <SelectItem value="delivered">Delivered</SelectItem>
@@ -237,7 +237,7 @@ export default function AdminDashboard() {
                   <SelectValue placeholder="All Packages" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">All Packages</SelectItem>
+                  <SelectItem value="all">All Packages</SelectItem>
                   <SelectItem value="lite">Virtual Ad Lite</SelectItem>
                   <SelectItem value="signature">Signature Scene</SelectItem>
                   <SelectItem value="immersive">Immersive Experience</SelectItem>
@@ -253,8 +253,8 @@ export default function AdminDashboard() {
               
               <Button
                 onClick={() => {
-                  setStatusFilter("");
-                  setPackageFilter("");
+                  setStatusFilter("all");
+                  setPackageFilter("all");
                   setDateFilter("");
                 }}
                 variant="secondary"

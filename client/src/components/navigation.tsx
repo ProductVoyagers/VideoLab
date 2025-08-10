@@ -17,10 +17,8 @@ export default function Navigation() {
         </Link>
         
         <div className="hidden md:flex items-center space-x-6">
-          <Link href="/">
-            <a className={`transition-colors ${location === '/' ? 'text-cinema-gold' : 'text-gray-300 hover:text-cinema-gold'}`}>
-              Home
-            </a>
+          <Link href="/" className={`transition-colors ${location === '/' ? 'text-cinema-gold' : 'text-gray-300 hover:text-cinema-gold'}`}>
+            Home
           </Link>
           <span className="text-gray-300">Services</span>
           <span className="text-gray-300">Portfolio</span>
