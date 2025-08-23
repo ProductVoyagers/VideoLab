@@ -12,13 +12,16 @@ function LandingPage() {
     <div className="min-h-screen relative">
       {/* Hero Video Background */}
       <video 
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 w-full h-full object-cover z-0"
         autoPlay
         muted
         loop
         playsInline
         preload="auto"
+        onLoadStart={() => console.log('Video loading started')}
+        onCanPlay={() => console.log('Video can play')}
         onError={(e) => console.log('Video error:', e)}
+        onLoadedData={() => console.log('Video loaded successfully')}
       >
         <source src="/attached_assets/VirtuaLWallNoText_1755988098901.mp4" type="video/mp4" />
         {/* Fallback to previous video if new one doesn't load */}
