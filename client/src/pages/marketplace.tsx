@@ -196,7 +196,7 @@ export default function MarketplacePage() {
                                  asset.category === 'mocap' ? Activity : Package2;
             
             return (
-              <Card key={asset.id} className="bg-white/5 backdrop-blur-sm border-white/10 overflow-hidden group hover:border-cinema-gold/50 transition-all duration-300" data-testid={`card-asset-${asset.id}`}>
+              <Card key={asset.id} className="bg-white/5 backdrop-blur-sm border-white/10 overflow-hidden group hover:border-cinema-gold/50 transition-all duration-300 flex flex-col" data-testid={`card-asset-${asset.id}`}>
                 <div className="aspect-video bg-cinema-gray relative overflow-hidden">
                   {asset.featured && (
                     <Badge className="absolute top-3 left-3 bg-cinema-gold text-cinema-dark" data-testid={`badge-featured-${asset.id}`}>
@@ -215,7 +215,7 @@ export default function MarketplacePage() {
                   </div>
                 </div>
                 
-                <CardContent className="p-6">
+                <CardContent className="p-6 flex flex-col flex-1">
                   <div className="flex items-center gap-2 mb-2">
                     <Badge variant="outline" className="border-white/20 text-white text-xs" data-testid={`badge-category-${asset.id}`}>
                       {categoryInfo?.name}
@@ -241,26 +241,28 @@ export default function MarketplacePage() {
                     <span data-testid={`text-size-${asset.id}`}>{formatFileSize(asset.fileSize || 0)}</span>
                   </div>
                   
-                  <div className="flex items-center justify-between">
-                    <div className="flex flex-col">
-                      <span className="text-2xl font-bold text-white" data-testid={`text-price-${asset.id}`}>
-                        {formatPrice(asset.price)}
-                      </span>
-                      {asset.creditCost && (
-                        <span className="text-sm text-cinema-gold flex items-center" data-testid={`text-credits-${asset.id}`}>
-                          <Coins className="w-3 h-3 mr-1" />
-                          {asset.creditCost} credits
+                  <div className="mt-auto pt-4">
+                    <div className="flex items-center justify-between">
+                      <div className="flex flex-col">
+                        <span className="text-2xl font-bold text-white" data-testid={`text-price-${asset.id}`}>
+                          {formatPrice(asset.price)}
                         </span>
-                      )}
+                        {asset.creditCost && (
+                          <span className="text-sm text-cinema-gold flex items-center" data-testid={`text-credits-${asset.id}`}>
+                            <Coins className="w-3 h-3 mr-1" />
+                            {asset.creditCost} credits
+                          </span>
+                        )}
+                      </div>
+                      <Button 
+                        size="default"
+                        className="gold-gradient text-cinema-dark font-semibold shrink-0" 
+                        data-testid={`button-download-${asset.id}`}
+                      >
+                        <Download className="w-4 h-4 mr-2" />
+                        Buy Now
+                      </Button>
                     </div>
-                    <Button 
-                      size="default"
-                      className="gold-gradient text-cinema-dark font-semibold" 
-                      data-testid={`button-download-${asset.id}`}
-                    >
-                      <Download className="w-4 h-4 mr-2" />
-                      Buy Now
-                    </Button>
                   </div>
                 </CardContent>
               </Card>
