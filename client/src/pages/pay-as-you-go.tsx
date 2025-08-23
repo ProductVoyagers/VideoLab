@@ -62,16 +62,28 @@ export default function PayAsYouGoPage() {
 
         {/* Category Tabs */}
         <Tabs value={activeCategory} onValueChange={setActiveCategory} className="max-w-6xl mx-auto">
-          <TabsList className="grid w-full grid-cols-3 bg-white/5 backdrop-blur-sm border border-white/10">
-            <TabsTrigger value="mocap" className="data-[state=active]:bg-cinema-gold data-[state=active]:text-cinema-dark">
+          <TabsList className="grid w-full grid-cols-3 bg-white/5 backdrop-blur-sm border border-white/10 p-1">
+            <TabsTrigger 
+              value="mocap" 
+              className="data-[state=active]:bg-cinema-gold data-[state=active]:text-cinema-dark data-[state=active]:shadow-lg transition-all duration-300 font-semibold text-white hover:bg-white/10"
+              data-testid="tab-mocap"
+            >
               <Video className="w-4 h-4 mr-2" />
               Motion Capture
             </TabsTrigger>
-            <TabsTrigger value="photoscan" className="data-[state=active]:bg-cinema-gold data-[state=active]:text-cinema-dark">
+            <TabsTrigger 
+              value="photoscan" 
+              className="data-[state=active]:bg-cinema-gold data-[state=active]:text-cinema-dark data-[state=active]:shadow-lg transition-all duration-300 font-semibold text-white hover:bg-white/10"
+              data-testid="tab-photoscan"
+            >
               <Camera className="w-4 h-4 mr-2" />
               Photogrammetry
             </TabsTrigger>
-            <TabsTrigger value="video" className="data-[state=active]:bg-cinema-gold data-[state=active]:text-cinema-dark">
+            <TabsTrigger 
+              value="video" 
+              className="data-[state=active]:bg-cinema-gold data-[state=active]:text-cinema-dark data-[state=active]:shadow-lg transition-all duration-300 font-semibold text-white hover:bg-white/10"
+              data-testid="tab-video"
+            >
               <Palette className="w-4 h-4 mr-2" />
               Video Enhancement
             </TabsTrigger>
