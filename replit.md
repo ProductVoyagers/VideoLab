@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a full-stack web application that serves as a client portal for Virtual Media Production services. The application allows clients to submit creative briefs through a step-by-step wizard, select from different production packages (Virtual Ad Lite, Signature Scene, Immersive Experience), and track their project status. It features an admin dashboard for internal team members to manage submissions and update project statuses. The application is built with a modern React frontend, Express.js backend, and PostgreSQL database, designed to streamline the virtual production workflow from client intake to project delivery.
+This is a comprehensive virtual production client portal featuring subscription-based services, a marketplace for digital assets, and pay-as-you-go credit system. The application serves as a professional production service platform where clients can subscribe to monthly production packages ($2,999-$15,999), purchase individual assets through the marketplace, or buy credits for flexible project needs. It includes a cinematic video background, modern UI with subscription-focused messaging, marketplace browsing with asset categories (photogrammetry, environments, mocap, media packs), credit management system, admin dashboard for submissions, and seamless integration between subscription services and marketplace functionality.
 
 ## User Preferences
 

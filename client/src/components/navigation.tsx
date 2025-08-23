@@ -1,5 +1,5 @@
 import { Link, useLocation } from "wouter";
-import { Video, Settings, Home } from "lucide-react";
+import { Video, Settings, Home, Store, CreditCard } from "lucide-react";
 
 export default function Navigation() {
   const [location] = useLocation();
@@ -20,8 +20,14 @@ export default function Navigation() {
           <Link href="/" className={`transition-colors ${location === '/' ? 'text-cinema-gold' : 'text-gray-300 hover:text-cinema-gold'}`}>
             Home
           </Link>
-          <span className="text-gray-300">Services</span>
-          <span className="text-gray-300">Portfolio</span>
+          <Link href="/marketplace" className={`transition-colors flex items-center space-x-1 ${location === '/marketplace' ? 'text-cinema-gold' : 'text-gray-300 hover:text-cinema-gold'}`}>
+            <Store className="w-4 h-4" />
+            <span>Marketplace</span>
+          </Link>
+          <Link href="/credits" className={`transition-colors flex items-center space-x-1 ${location === '/credits' ? 'text-cinema-gold' : 'text-gray-300 hover:text-cinema-gold'}`}>
+            <CreditCard className="w-4 h-4" />
+            <span>Credits</span>
+          </Link>
           <Link href="/admin">
             <button className="bg-cinema-slate px-4 py-2 rounded-lg hover:bg-gray-600 transition-colors flex items-center space-x-2">
               <Settings className="w-4 h-4" />

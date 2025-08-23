@@ -49,6 +49,7 @@ export default function LandingPage() {
               See Plans
             </Button>
             <Button 
+              onClick={() => setLocation("/marketplace")}
               variant="outline"
               className="border-white/20 bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white px-8 py-6 rounded-xl text-lg font-semibold"
             >
@@ -105,6 +106,14 @@ export default function LandingPage() {
             </div>
             <h3 className="text-xl font-semibold text-white mb-2">Pay-as-you-go Credits</h3>
             <p className="text-gray-300 mb-4">Scale up for big campaigns or premium options without changing plans. Simple credit top-ups.</p>
+            <Button 
+              onClick={() => setLocation("/credits")}
+              variant="outline" 
+              size="sm" 
+              className="border-white/20 text-white hover:bg-white/10 mt-4"
+            >
+              Buy Credits
+            </Button>
             <ul className="space-y-2 text-sm">
               <li className="flex gap-2">
                 <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
@@ -127,6 +136,14 @@ export default function LandingPage() {
             </div>
             <h3 className="text-xl font-semibold text-white mb-2">Marketplace</h3>
             <p className="text-gray-300 mb-4">Curated photogrammetry assets, VP-ready environments, and AI media packs. Start with first-party, open to creators later.</p>
+            <Button 
+              onClick={() => setLocation("/marketplace")}
+              variant="outline" 
+              size="sm" 
+              className="border-white/20 text-white hover:bg-white/10 mt-4"
+            >
+              Browse Assets
+            </Button>
             <ul className="space-y-2 text-sm">
               <li className="flex gap-2">
                 <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />

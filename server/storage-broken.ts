@@ -106,19 +106,9 @@ export class MemStorage implements IStorage {
     ];
     
     sampleAssets.forEach(asset => this.assets.set(asset.id, asset));
-    
-    // Initialize sample user credits
-    this.userCredits.set("demo@example.com", {
-      id: "credits-1",
-      email: "demo@example.com",
-      credits: 150,
-      totalPurchased: 600,
-      lastPurchase: new Date("2024-01-15"),
-      createdAt: new Date("2023-12-01"),
-    });
   }
 
-  // Submission methods
+  // Submission methods (existing)
   async getSubmission(id: string): Promise<Submission | undefined> {
     return this.submissions.get(id);
   }
@@ -134,11 +124,6 @@ export class MemStorage implements IStorage {
     const submission: Submission = {
       ...insertSubmission,
       id,
-      status: insertSubmission.status || "received",
-      brandName: insertSubmission.brandName || null,
-      timeline: insertSubmission.timeline || null,
-      additionalNotes: insertSubmission.additionalNotes || null,
-      files: insertSubmission.files ? [...insertSubmission.files] : null,
       submissionDate: new Date(),
     };
     this.submissions.set(id, submission);
@@ -195,13 +180,6 @@ export class MemStorage implements IStorage {
     const asset: MarketplaceAsset = {
       ...insertAsset,
       id,
-      tags: insertAsset.tags ? [...insertAsset.tags] : null,
-      creditCost: insertAsset.creditCost || null,
-      previewUrl: insertAsset.previewUrl || null,
-      downloadUrl: insertAsset.downloadUrl || null,
-      fileSize: insertAsset.fileSize || null,
-      fileFormat: insertAsset.fileFormat || null,
-      featured: insertAsset.featured || false,
       createdAt: new Date(),
     };
     this.assets.set(id, asset);
@@ -218,9 +196,6 @@ export class MemStorage implements IStorage {
     const credits: UserCredits = {
       ...insertCredits,
       id,
-      credits: insertCredits.credits || 0,
-      totalPurchased: insertCredits.totalPurchased || 0,
-      lastPurchase: insertCredits.lastPurchase || null,
       createdAt: new Date(),
     };
     this.userCredits.set(insertCredits.email, credits);
@@ -257,6 +232,49 @@ export class MemStorage implements IStorage {
         lastPurchase: new Date()
       });
     }
+  }
+
+  async getSubmission(id: string): Promise<Submission | undefined> {
+    return this.submissions.get(id);
+  }
+
+  async getAllSubmissions(): Promise<Submission[]> {
+    return Array.from(this.submissions.values()).sort(
+      (a, b) => new Date(b.submissionDate).getTime() - new Date(a.submissionDate).getTime()
+    );
+  }
+
+  async createSubmission(insertSubmission: InsertSubmission): Promise<Submission> {
+    const id = `VP-${new Date().getFullYear()}-${Math.floor(Math.random() * 999999).toString().padStart(6, '0')}`;
+    const submission: Submission = {
+      ...insertSubmission,
+      id,
+      submissionDate: new Date(),
+    };
+    this.submissions.set(id, submission);
+    return submission;
+  }
+
+  async updateSubmissionStatus(id: string, status: string): Promise<Submission | undefined> {
+    const submission = this.submissions.get(id);
+    if (submission) {
+      const updatedSubmission = { ...submission, status };
+      this.submissions.set(id, updatedSubmission);
+      return updatedSubmission;
+    }
+    return undefined;
+  }
+
+  async getSubmissionsByStatus(status: string): Promise<Submission[]> {
+    return Array.from(this.submissions.values())
+      .filter(submission => submission.status === status)
+      .sort((a, b) => new Date(b.submissionDate).getTime() - new Date(a.submissionDate).getTime());
+  }
+
+  async getSubmissionsByPackage(packageType: string): Promise<Submission[]> {
+    return Array.from(this.submissions.values())
+      .filter(submission => submission.packageType === packageType)
+      .sort((a, b) => new Date(b.submissionDate).getTime() - new Date(a.submissionDate).getTime());
   }
 }
 

@@ -1,5 +1,5 @@
 import { sql } from "drizzle-orm";
-import { pgTable, text, varchar, timestamp, json } from "drizzle-orm/pg-core";
+import { pgTable, text, varchar, timestamp, json, integer, boolean } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -67,3 +67,115 @@ export const packageTypes = {
 } as const;
 
 export type PackageType = keyof typeof packageTypes;
+
+// Marketplace Assets Schema
+export const marketplaceAssets = pgTable("marketplace_assets", {
+  id: varchar("id").primaryKey(),
+  title: text("title").notNull(),
+  description: text("description").notNull(),
+  category: text("category").notNull(), // 'photogrammetry', 'environments', 'mocap', 'media-packs'
+  tags: json("tags").$type<string[]>(),
+  price: integer("price").notNull(), // price in cents
+  creditCost: integer("credit_cost"), // alternative credit pricing
+  previewUrl: text("preview_url"),
+  downloadUrl: text("download_url"),
+  fileSize: integer("file_size"), // in bytes
+  fileFormat: text("file_format"),
+  license: text("license").notNull().default("standard"), // 'standard', 'commercial', 'extended'
+  featured: boolean("featured").notNull().default(false),
+  createdAt: timestamp("created_at").notNull().default(sql`now()`),
+});
+
+export const insertMarketplaceAssetSchema = createInsertSchema(marketplaceAssets).omit({
+  id: true,
+  createdAt: true,
+});
+
+export type InsertMarketplaceAsset = z.infer<typeof insertMarketplaceAssetSchema>;
+export type MarketplaceAsset = typeof marketplaceAssets.$inferSelect;
+
+// User Credits Schema (for pay-as-you-go)
+export const userCredits = pgTable("user_credits", {
+  id: varchar("id").primaryKey(),
+  email: text("email").notNull(),
+  credits: integer("credits").notNull().default(0),
+  totalPurchased: integer("total_purchased").notNull().default(0),
+  lastPurchase: timestamp("last_purchase"),
+  createdAt: timestamp("created_at").notNull().default(sql`now()`),
+});
+
+export const insertUserCreditsSchema = createInsertSchema(userCredits).omit({
+  id: true,
+  createdAt: true,
+});
+
+export type InsertUserCredits = z.infer<typeof insertUserCreditsSchema>;
+export type UserCredits = typeof userCredits.$inferSelect;
+
+// Credit Packages for Pay-as-you-go
+export const creditPackages = {
+  starter: {
+    name: "Starter Pack",
+    credits: 100,
+    price: 99, // $99 for 100 credits
+    description: "Perfect for trying individual services",
+    features: [
+      "100 production credits",
+      "Basic asset downloads",
+      "Standard processing priority",
+      "6 month expiry"
+    ]
+  },
+  pro: {
+    name: "Pro Pack", 
+    credits: 500,
+    price: 399, // $399 for 500 credits (20% discount)
+    description: "Great for regular project needs",
+    features: [
+      "500 production credits",
+      "Premium asset access",
+      "Priority processing",
+      "12 month expiry"
+    ]
+  },
+  studio: {
+    name: "Studio Pack",
+    credits: 1500,
+    price: 999, // $999 for 1500 credits (33% discount)
+    description: "Maximum flexibility for agencies",
+    features: [
+      "1500 production credits", 
+      "All premium assets included",
+      "Fastest processing priority",
+      "No expiry"
+    ]
+  }
+} as const;
+
+export type CreditPackage = keyof typeof creditPackages;
+
+// Asset Categories
+export const assetCategories = {
+  photogrammetry: {
+    name: "3D Scanned Objects",
+    description: "High-quality photogrammetry assets",
+    icon: "Cube"
+  },
+  environments: {
+    name: "VP Environments", 
+    description: "Virtual production ready environments",
+    icon: "Mountain"
+  },
+  mocap: {
+    name: "Motion Capture",
+    description: "Pre-recorded motion capture data",
+    icon: "Activity"
+  },
+  "media-packs": {
+    name: "Media Packs",
+    description: "Curated video and image collections", 
+    icon: "Package"
+  }
+} as const;
+
+export type AssetCategory = keyof typeof assetCategories;

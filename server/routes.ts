@@ -91,6 +91,104 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Marketplace Assets API routes
+  
+  // Get all marketplace assets
+  app.get("/api/marketplace-assets", async (req, res) => {
+    try {
+      const { category, featured } = req.query;
+      
+      let assets;
+      if (category) {
+        assets = await storage.getAssetsByCategory(category as string);
+      } else if (featured === 'true') {
+        assets = await storage.getFeaturedAssets();
+      } else {
+        assets = await storage.getAllAssets();
+      }
+      
+      res.json(assets);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to fetch marketplace assets" });
+    }
+  });
+
+  // Get single marketplace asset
+  app.get("/api/marketplace-assets/:id", async (req, res) => {
+    try {
+      const asset = await storage.getAsset(req.params.id);
+      if (!asset) {
+        return res.status(404).json({ message: "Asset not found" });
+      }
+      res.json(asset);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to fetch asset" });
+    }
+  });
+
+  // User Credits API routes
+  
+  // Get user credits
+  app.get("/api/user-credits", async (req, res) => {
+    try {
+      const { email } = req.query;
+      
+      if (!email) {
+        return res.status(400).json({ message: "Email is required" });
+      }
+      
+      let credits = await storage.getUserCredits(email as string);
+      
+      // Create default credits if user doesn't exist
+      if (!credits) {
+        credits = await storage.createUserCredits({
+          email: email as string,
+          credits: 0,
+          totalPurchased: 0,
+          lastPurchase: null
+        });
+      }
+      
+      res.json(credits);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to fetch user credits" });
+    }
+  });
+
+  // Add credits to user account
+  app.post("/api/user-credits/purchase", async (req, res) => {
+    try {
+      const { email, amount } = req.body;
+      
+      if (!email || !amount || amount <= 0) {
+        return res.status(400).json({ message: "Valid email and amount are required" });
+      }
+      
+      const updatedCredits = await storage.addCredits(email, amount);
+      
+      res.json(updatedCredits);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to add credits" });
+    }
+  });
+
+  // Mock credit history endpoint
+  app.get("/api/credit-history", async (req, res) => {
+    try {
+      // Mock data for credit history - in real app this would be stored
+      const mockHistory = [
+        { date: "2024-01-20", action: "Asset Download", amount: -25, description: "Modern Office Environment", balance: 150 },
+        { date: "2024-01-18", action: "Credit Purchase", amount: 500, description: "Pro Pack", balance: 175 },
+        { date: "2024-01-15", action: "Motion Capture", amount: -30, description: "Walking Motion Pack", balance: -325 },
+        { date: "2024-01-12", action: "Asset Download", amount: -20, description: "Urban Alley Photogrammetry", balance: -295 },
+      ];
+      
+      res.json(mockHistory);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to fetch credit history" });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }
