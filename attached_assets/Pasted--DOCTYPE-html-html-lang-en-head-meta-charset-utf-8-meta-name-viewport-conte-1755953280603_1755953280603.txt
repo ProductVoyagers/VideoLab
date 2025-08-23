@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Virtual Media Production – Subscriptions & Marketplace</title>
+  <meta name="description" content="AI‑driven virtual production subscriptions with pay‑as‑you‑go credits and a curated photogrammetry & media marketplace. We produce the content for you." />
+  <meta name="color-scheme" content="light dark" />
+
+  <!-- Tailwind CDN (Replit friendly) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'system-ui', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'] },
+          colors: { brand: { DEFAULT: '#0ea5e9', dark: '#0b87bf' } },
+          boxShadow: { glow: '0 0 40px rgba(14,165,233,.35)' }
+        }
+      }
+    }
+  </script>
+  <!-- Inter font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    /* Subtle animated gradient background */
+    .bg-grid {
+      background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,.08) 1px, transparent 0);
+      background-size: 24px 24px;
+    }
+    .noise { position: absolute; inset: 0; pointer-events:none; mix-blend-mode: soft-light; opacity:.35; background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2296%22 height=%2296%22 viewBox=%220 0 96 96%22><filter id=%22n%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22 numOctaves=%222%22 stitchTiles=%22stitch%22/></filter><rect width=%2296%22 height=%2296%22 filter=%22url(%23n)%22 opacity=%220.12%22/></svg>'); }
+    .glass { backdrop-filter: blur(10px); background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02)); border: 1px solid rgba(255,255,255,.15); }
+    .dark .glass { background: linear-gradient(180deg, rgba(0,0,0,.2), rgba(0,0,0,.1)); border-color: rgba(255,255,255,.08); }
+  </style>
+</head>
+<body class="font-sans antialiased text-slate-900 dark:text-slate-100 bg-slate-50 dark:bg-slate-950">
+  <!-- Top Banner -->
+  <div class="relative">
+    <div class="absolute inset-0 bg-gradient-to-br from-brand/20 via-fuchsia-500/10 to-emerald-400/10 blur-3xl"></div>
+    <div class="noise"></div>
+    <header class="relative mx-auto max-w-7xl px-6 py-5 flex items-center justify-between">
+      <a href="#home" class="flex items-center gap-2 group">
+        <div class="h-9 w-9 rounded-xl bg-brand/90 grid place-items-center text-white shadow-glow">
+          <i data-lucide="scan-line" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <p class="text-sm leading-4 opacity-70">Virtual Media</p>
+          <h1 class="text-lg font-bold tracking-tight">Production</h1>
+        </div>
+      </a>
+      <nav class="hidden md:flex items-center gap-7 text-sm">
+        <a href="#offering" class="opacity-80 hover:opacity-100">Offering</a>
+        <a href="#how" class="opacity-80 hover:opacity-100">How it works</a>
+        <a href="#pricing" class="opacity-80 hover:opacity-100">Pricing</a>
+        <a href="#marketplace" class="opacity-80 hover:opacity-100">Marketplace</a>
+        <a href="#contact" class="opacity-80 hover:opacity-100">Contact</a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <a href="#pricing" class="hidden sm:inline-flex items-center gap-2 rounded-xl px-4 py-2 bg-slate-900 text-white dark:bg-white dark:text-slate-900 hover:-translate-y-0.5 transition-transform">
+          <i data-lucide="sparkles" class="w-4 h-4"></i>
+          Get Started
+        </a>
+        <button aria-label="menu" id="menuBtn" class="md:hidden p-2 rounded-lg hover:bg-white/10">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile Nav -->
+    <div id="mobileNav" class="glass hidden md:hidden mx-4 rounded-2xl p-4">
+      <div class="grid gap-2 text-sm">
+        <a href="#offering" class="px-2 py-2 rounded-lg hover:bg-white/5">Offering</a>
+        <a href="#how" class="px-2 py-2 rounded-lg hover:bg-white/5">How it works</a>
+        <a href="#pricing" class="px-2 py-2 rounded-lg hover:bg-white/5">Pricing</a>
+        <a href="#marketplace" class="px-2 py-2 rounded-lg hover:bg-white/5">Marketplace</a>
+        <a href="#contact" class="px-2 py-2 rounded-lg hover:bg-white/5">Contact</a>
+      </div>
+    </div>
+
+    <!-- Hero -->
+    <section id="home" class="relative mx-auto max-w-7xl px-6 pt-10 pb-16">
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <div class="inline-flex items-center gap-2 rounded-full px-3 py-1 bg-white/60 dark:bg-white/10 ring-1 ring-black/5 dark:ring-white/10 text-xs mb-4">
+            <i data-lucide="bot" class="w-3.5 h-3.5"></i>
+            AI‑driven production • We do the work
+          </div>
+          <h2 class="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight">
+            Subscriptions & Marketplace for <span class="text-brand">Cinematic</span> Virtual Production
+          </h2>
+          <p class="mt-4 text-slate-600 dark:text-slate-300 text-lg max-w-prose">
+            We produce your ads and media using AI‑enhanced motion capture, photogrammetry, and video generation. You subscribe. You send inputs. <span class="font-semibold">We deliver.</span>
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="#pricing" class="inline-flex items-center gap-2 rounded-xl px-5 py-3 bg-brand text-white hover:bg-brand-dark shadow-glow">
+              <i data-lucide="credit-card" class="w-4 h-4"></i>
+              See Plans
+            </a>
+            <a href="#marketplace" class="inline-flex items-center gap-2 rounded-xl px-5 py-3 ring-1 ring-slate-300/50 dark:ring-white/20 hover:bg-white/10">
+              <i data-lucide="store" class="w-4 h-4"></i>
+              Explore Marketplace
+            </a>
+          </div>
+          <ul class="mt-6 grid gap-2 text-sm text-slate-600 dark:text-slate-300">
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500"></i> AI as production engine (not DIY)</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500"></i> Predictable subscriptions + flexible credits</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500"></i> Curated assets: photogrammetry, VP environments, media packs</li>
+          </ul>
+        </div>
+        <div>
+          <div class="relative rounded-3xl overflow-hidden ring-1 ring-white/15 shadow-2xl">
+            <div class="absolute inset-0 bg-gradient-to-tr from-sky-500/20 via-purple-500/10 to-emerald-400/20"></div>
+            <img alt="LED volume & mocap montage" class="relative w-full h-[360px] object-cover" src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1200&auto=format&fit=crop"/>
+          </div>
+          <p class="text-xs opacity-60 mt-2">Placeholder image (Unsplash). Replace with your own showcase.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Offering -->
+  <section id="offering" class="mx-auto max-w-7xl px-6 py-16">
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="glass rounded-2xl p-6">
+        <div class="h-10 w-10 rounded-xl bg-brand/90 grid place-items-center text-white mb-4"><i data-lucide="badge-dollar" class="w-5 h-5"></i></div>
+        <h3 class="text-xl font-semibold">Subscriptions</h3>
+        <p class="mt-2 text-slate-600 dark:text-slate-300">Predictable monthly access to production capacity and deliverables. We scope, schedule, and deliver on cadence.</p>
+        <ul class="mt-3 space-y-1 text-sm">
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500"></i> AI‑enhanced ad creation</li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500"></i> Motion capture cleanup</li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500"></i> Photogrammetry processing</li>
+        </ul>
+      </div>
+      <div class="glass rounded-2xl p-6">
+        <div class="h-10 w-10 rounded-xl bg-brand/90 grid place-items-center text-white mb-4"><i data-lucide="plus-square" class="w-5 h-5"></i></div>
+        <h3 class="text-xl font-semibold">Pay‑as‑you‑go Credits</h3>
+        <p class="mt-2 text-slate-600 dark:text-slate-300">Scale up for big campaigns or premium options without changing plans. Simple credit top‑ups.</p>
+        <ul class="mt-3 space-y-1 text-sm">
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500"></i> Outdoor scans</li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500"></i> Pro video variants</li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500"></i> Priority delivery</li>
+        </ul>
+      </div>
+      <div class="glass rounded-2xl p-6">
+        <div class="h-10 w-10 rounded-xl bg-brand/90 grid place-items-center text-white mb-4"><i data-lucide="store" class="w-5 h-5"></i></div>
+        <h3 class="text-xl font-semibold">Marketplace</h3>
+        <p class="mt-2 text-slate-600 dark:text-slate-300">Curated photogrammetry assets, VP‑ready environments, and AI media packs. Start with first‑party, open to creators later.</p>
+        <ul class="mt-3 space-y-1 text-sm">
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500"></i> Smart tagging & search</li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500"></i> License clarity</li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500"></i> Instant previews</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section id="how" class="mx-auto max-w-7xl px-6 pb-8">
+    <h3 class="text-2xl font-bold tracking-tight">How it works</h3>
+    <div class="mt-6 grid md:grid-cols-4 gap-6">
+      <div class="glass rounded-2xl p-6">
+        <div class="text-sm opacity-70">Step 1</div>
+        <h4 class="font-semibold mt-1">Subscribe</h4>
+        <p class="text-sm text-slate-600 dark:text-slate-300 mt-2">Choose a plan that fits your monthly output.</p>
+      </div>
+      <div class="glass rounded-2xl p-6">
+        <div class="text-sm opacity-70">Step 2</div>
+        <h4 class="font-semibold mt-1">Send Inputs</h4>
+        <p class="text-sm text-slate-600 dark:text-slate-300 mt-2">Footage, products, references, brand guides.</p>
+      </div>
+      <div class="glass rounded-2xl p-6">
+        <div class="text-sm opacity-70">Step 3</div>
+        <h4 class="font-semibold mt-1">AI + Team Produce</h4>
+        <p class="text-sm text-slate-600 dark:text-slate-300 mt-2">Mocap cleanup, photogrammetry, AI video & VFX.</p>
+      </div>
+      <div class="glass rounded-2xl p-6">
+        <div class="text-sm opacity-70">Step 4</div>
+        <h4 class="font-semibold mt-1">Deliver</h4>
+        <p class="text-sm text-slate-600 dark:text-slate-300 mt-2">Cinematic ads and assets on time, every month.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="mx-auto max-w-7xl px-6 py-16">
+    <div class="flex items-center justify-between flex-wrap gap-4">
+      <div>
+        <h3 class="text-2xl font-bold tracking-tight">Pricing</h3>
+        <p class="text-slate-600 dark:text-slate-300">Switch between monthly and annual. Edit prices in the markup.</p>
+      </div>
+      <div class="flex items-center gap-2 text-sm">
+        <span>Monthly</span>
+        <button id="billingToggle" class="relative inline-flex h-8 w-14 items-center rounded-full bg-slate-300 dark:bg-slate-700">
+          <span id="knob" class="inline-block h-6 w-6 translate-x-1 rounded-full bg-white transition-transform"></span>
+        </button>
+        <span>Annual <span class="ml-1 px-2 py-0.5 rounded-full text-xs bg-emerald-500/15 text-emerald-600">save 15%</span></span>
+      </div>
+    </div>
+
+    <div class="mt-8 grid md:grid-cols-3 gap-6">
+      <!-- Starter -->
+      <div class="glass rounded-2xl p-6 flex flex-col">
+        <div class="flex items-center gap-2">
+          <i data-lucide="rocket" class="w-5 h-5"></i>
+          <h4 class="font-semibold text-lg">Starter</h4>
+        </div>
+        <p class="text-sm text-slate-600 dark:text-slate-300 mt-2">For creators & small brands testing VP content.</p>
+        <div class="mt-4">
+          <span class="text-3xl font-extrabold"><span class="price" data-month="SAR 1,500" data-annual="SAR 1,275">SAR 1,500</span></span>
+          <span class="opacity-70">/ mo</span>
+        </div>
+        <ul class="mt-4 space-y-2 text-sm flex-1">
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500"></i> 1 short ad / mo</li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500"></i> Basic mocap cleanup</li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500"></i> Standard delivery</li>
+        </ul>
+        <a href="#contact" class="mt-4 inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 bg-slate-900 text-white dark:bg-white dark:text-slate-900">Select</a>
+      </div>
+      <!-- Pro -->
+      <div class="glass rounded-2xl p-6 flex flex-col ring-1 ring-brand/30">
+        <div class="flex items-center gap-2">
+          <i data-lucide="sparkles" class="w-5 h-5"></i>
+          <h4 class="font-semibold text-lg">Pro</h4>
+        </div>
+        <p class="text-sm text-slate-600 dark:text-slate-300 mt-2">For marketing teams shipping regular campaigns.</p>
+        <div class="mt-4">
+          <span class="text-3xl font-extrabold"><span class="price" data-month="SAR 4,000" data-annual="SAR 3,400">SAR 4,000</span></span>
+          <span class="opacity-70">/ mo</span>
+        </div>
+        <ul class="mt-4 space-y-2 text-sm flex-1">
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500"></i> 3 ads or variants / mo</li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500"></i> Photogrammetry processing (indoor)</li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500"></i> Priority revisions</li>
+        </ul>
+        <a href="#contact" class="mt-4 inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 bg-brand text-white">Select</a>
+      </div>
+      <!-- Studio -->
+      <div class="glass rounded-2xl p-6 flex flex-col">
+        <div class="flex items-center gap-2">
+          <i data-lucide="building-2" class="w-5 h-5"></i>
+          <h4 class="font-semibold text-lg">Studio</h4>
+        </div>
+        <p class="text-sm text-slate-600 dark:text-slate-300 mt-2">For larger brands & agencies with high output.</p>
+        <div class="mt-4">
+          <span class="text-3xl font-extrabold"><span class="price" data-month="SAR 9,000" data-annual="SAR 7,650">SAR 9,000</span></span>
+          <span class="opacity-70">/ mo</span>
+        </div>
+        <ul class="mt-4 space-y-2 text-sm flex-1">
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500"></i> 8 ads / variants / mo</li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500"></i> Indoor + outdoor photogrammetry</li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500"></i> Fast‑track delivery</li>
+        </ul>
+        <a href="#contact" class="mt-4 inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 ring-1 ring-slate-300/50 dark:ring-white/20">Select</a>
+      </div>
+    </div>
+
+    <!-- Credits explainer -->
+    <div class="mt-10 grid lg:grid-cols-2 gap-6 items-start">
+      <div class="glass rounded-2xl p-6">
+        <div class="flex items-center gap-2">
+          <i data-lucide="cpu" class="w-5 h-5"></i>
+          <h4 class="font-semibold">AI Integration</h4>
+        </div>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">AI is our production engine. You subscribe and provide inputs; our team uses AI‑powered workflows for mocap cleanup, photogrammetry reconstruction, video generation, and VFX. On the marketplace, AI powers upscaling, relighting, and smart tagging for reuse.</p>
+      </div>
+      <div class="glass rounded-2xl p-6">
+        <div class="flex items-center gap-2">
+          <i data-lucide="gauge" class="w-5 h-5"></i>
+          <h4 class="font-semibold">Credit usage example</h4>
+        </div>
+        <ul class="mt-3 text-sm space-y-2">
+          <li>MotionCapture+ Basic = <span class="font-semibold">2</span> credits</li>
+          <li>PhotoScan360 Outdoor = <span class="font-semibold">5</span> credits</li>
+          <li>VideoBoostAI Pro = <span class="font-semibold">3</span> credits</li>
+        </ul>
+        <div class="mt-4 grid sm:grid-cols-3 gap-3 text-sm">
+          <label class="grid gap-1">MoCap Basic
+            <input id="mocapCount" type="number" min="0" value="1" class="w-full rounded-lg bg-transparent ring-1 ring-slate-300/60 dark:ring-white/15 px-3 py-2" />
+          </label>
+          <label class="grid gap-1">Outdoor Scans
+            <input id="scanCount" type="number" min="0" value="0" class="w-full rounded-lg bg-transparent ring-1 ring-slate-300/60 dark:ring-white/15 px-3 py-2" />
+          </label>
+          <label class="grid gap-1">Video Pro
+            <input id="videoCount" type="number" min="0" value="1" class="w-full rounded-lg bg-transparent ring-1 ring-slate-300/60 dark:ring-white/15 px-3 py-2" />
+          </label>
+        </div>
+        <div class="mt-3 text-sm">Estimated credits: <span id="creditTotal" class="font-semibold">5</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Marketplace preview -->
+  <section id="marketplace" class="mx-auto max-w-7xl px-6 pb-16">
+    <div class="flex items-center justify-between flex-wrap gap-4">
+      <h3 class="text-2xl font-bold tracking-tight">Marketplace (Preview)</h3>
+      <a href="#contact" class="inline-flex items-center gap-2 rounded-xl px-4 py-2 ring-1 ring-slate-300/50 dark:ring-white/20 hover:bg-white/5 text-sm">
+        <i data-lucide="upload-cloud" class="w-4 h-4"></i> Become a creator
+      </a>
+    </div>
+    <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Item card -->
+      <article class="glass rounded-2xl overflow-hidden">
+        <div class="aspect-video bg-grid bg-slate-900/40"></div>
+        <div class="p-4">
+          <div class="flex items-center justify-between">
+            <h4 class="font-semibold">Hejaz Rock Formation – 8K Scan</h4>
+            <span class="text-sm opacity-70">SAR 199</span>
+          </div>
+          <p class="mt-1 text-sm opacity-80">PBR textures, clean topology, VP‑ready.</p>
+        </div>
+      </article>
+      <article class="glass rounded-2xl overflow-hidden">
+        <div class="aspect-video bg-grid bg-slate-900/40"></div>
+        <div class="p-4">
+          <div class="flex items-center justify-between">
+            <h4 class="font-semibold">Desert Wadi – Unreal Environment</h4>
+            <span class="text-sm opacity-70">SAR 349</span>
+          </div>
+          <p class="mt-1 text-sm opacity-80">Nanite‑ready, Lumen lighting presets.</p>
+        </div>
+      </article>
+      <article class="glass rounded-2xl overflow-hidden">
+        <div class="aspect-video bg-grid bg-slate-900/40"></div>
+        <div class="p-4">
+          <div class="flex items-center justify-between">
+            <h4 class="font-semibold">AI Media Pack – Sports Ad</h4>
+            <span class="text-sm opacity-70">SAR 149</span>
+          </div>
+          <p class="mt-1 text-sm opacity-80">Shotlist prompts, LUTs, motion presets.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Use cases / Sectors -->
+  <section class="mx-auto max-w-7xl px-6 pb-16">
+    <h3 class="text-2xl font-bold tracking-tight">Who we help</h3>
+    <div class="mt-6 grid md:grid-cols-4 gap-6 text-sm">
+      <div class="glass rounded-2xl p-6"><i data-lucide="shopping-bag" class="w-5 h-5"></i><h4 class="font-semibold mt-2">Brands & Marketing</h4><p class="opacity-80 mt-1">Always‑on ad content, faster cycles.</p></div>
+      <div class="glass rounded-2xl p-6"><i data-lucide="film" class="w-5 h-5"></i><h4 class="font-semibold mt-2">Film & Streaming</h4><p class="opacity-80 mt-1">Virtual sets, mocap, previz.</p></div>
+      <div class="glass rounded-2xl p-6"><i data-lucide="library" class="w-5 h-5"></i><h4 class="font-semibold mt-2">Culture & Heritage</h4><p class="opacity-80 mt-1">Digitization & immersive exhibits.</p></div>
+      <div class="glass rounded-2xl p-6"><i data-lucide="trophy" class="w-5 h-5"></i><h4 class="font-semibold mt-2">Sports</h4><p class="opacity-80 mt-1">High‑impact promos, motion analysis.</p></div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="mx-auto max-w-7xl px-6 pb-16">
+    <h3 class="text-2xl font-bold tracking-tight">FAQ</h3>
+    <div class="mt-6 grid md:grid-cols-2 gap-6 text-sm">
+      <div class="glass rounded-2xl p-6">
+        <h4 class="font-semibold">Do clients create content themselves?</h4>
+        <p class="mt-2 opacity-80">No. We produce the content for you. AI powers our internal workflow; you simply provide inputs and feedback.</p>
+      </div>
+      <div class="glass rounded-2xl p-6">
+        <h4 class="font-semibold">Can I mix subscriptions with credits?</h4>
+        <p class="mt-2 opacity-80">Yes. Keep a base plan and add credits for peak months or premium options.</p>
+      </div>
+      <div class="glass rounded-2xl p-6">
+        <h4 class="font-semibold">When will the marketplace open to creators?</h4>
+        <p class="mt-2 opacity-80">We start with first‑party assets. Creator onboarding opens in a later phase with clear licensing and revenue share.</p>
+      </div>
+      <div class="glass rounded-2xl p-6">
+        <h4 class="font-semibold">Which tools do you use?</h4>
+        <p class="mt-2 opacity-80">Unreal‑centric pipeline, mocap & photogrammetry, plus AI video and enhancement tools tailored per project.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="mx-auto max-w-7xl px-6 pb-24">
+    <div class="glass rounded-3xl p-8 md:p-10">
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          <h3 class="text-2xl font-bold tracking-tight">Ready to ship cinematic content on a subscription?</h3>
+          <p class="mt-2 text-sm opacity-80">Tell us about your brand and monthly goals. We’ll propose the right plan.</p>
+          <div class="mt-5 grid gap-3 text-sm">
+            <a class="inline-flex items-center gap-2" href="mailto:hello@virtualmediaproduction.example">
+              <i data-lucide="mail" class="w-4 h-4"></i> hello@virtualmediaproduction.example
+            </a>
+            <a class="inline-flex items-center gap-2" href="https://wa.me/966500000000" target="_blank" rel="noopener">
+              <i data-lucide="message-circle" class="w-4 h-4"></i> WhatsApp us
+            </a>
+          </div>
+        </div>
+        <form class="grid gap-3 text-sm" onsubmit="event.preventDefault(); alert('Thanks! We\'ll reach out shortly.'); this.reset();">
+          <div class="grid sm:grid-cols-2 gap-3">
+            <label class="grid gap-1">Name
+              <input required type="text" class="w-full rounded-lg bg-transparent ring-1 ring-slate-300/60 dark:ring-white/15 px-3 py-2" />
+            </label>
+            <label class="grid gap-1">Email
+              <input required type="email" class="w-full rounded-lg bg-transparent ring-1 ring-slate-300/60 dark:ring-white/15 px-3 py-2" />
+            </label>
+          </div>
+          <label class="grid gap-1">Company / Brand
+            <input type="text" class="w-full rounded-lg bg-transparent ring-1 ring-slate-300/60 dark:ring-white/15 px-3 py-2" />
+          </label>
+          <label class="grid gap-1">Monthly goal
+            <select class="w-full rounded-lg bg-transparent ring-1 ring-slate-300/60 dark:ring-white/15 px-3 py-2">
+              <option>1–2 ads / month</option>
+              <option>3–5 ads / month</option>
+              <option>6–10 ads / month</option>
+              <option>High‑volume (custom)</option>
+            </select>
+          </label>
+          <label class="grid gap-1">Brief
+            <textarea rows="4" class="w-full rounded-lg bg-transparent ring-1 ring-slate-300/60 dark:ring-white/15 px-3 py-2" placeholder="What do you want to make?"></textarea>
+          </label>
+          <button class="mt-2 inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 bg-brand text-white">
+            <i data-lucide="send" class="w-4 h-4"></i> Request proposal
+          </button>
+        </form>
+      </div>
+    </div>
+    <p class="text-xs opacity-60 mt-4">© <span id="year"></span> Virtual Media Production. All rights reserved.</p>
+  </section>
+
+  <script>
+    // Icons
+    document.addEventListener('DOMContentLoaded', () => { if (window.lucide) lucide.createIcons(); });
+
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    if (menuBtn) menuBtn.addEventListener('click', () => mobileNav.classList.toggle('hidden'));
+
+    // Billing toggle
+    const toggle = document.getElementById('billingToggle');
+    const knob = document.getElementById('knob');
+    const prices = document.querySelectorAll('.price');
+    let annual = false;
+    function updatePrices(){
+      prices.forEach(el => { el.textContent = annual ? el.dataset.annual : el.dataset.month; });
+    }
+    if (toggle) toggle.addEventListener('click', () => {
+      annual = !annual; knob.style.transform = annual ? 'translateX(28px)' : 'translateX(4px)'; updatePrices();
+    });
+    updatePrices();
+
+    // Credit calculator
+    function calcCredits(){
+      const mocap = Number(document.getElementById('mocapCount').value || 0) * 2; // 2 credits each
+      const scan = Number(document.getElementById('scanCount').value || 0) * 5;  // 5 credits each
+      const video = Number(document.getElementById('videoCount').value || 0) * 3; // 3 credits each
+      document.getElementById('creditTotal').textContent = mocap + scan + video;
+    }
+    ['mocapCount','scanCount','videoCount'].forEach(id => {
+      const el = document.getElementById(id); if (el) el.addEventListener('input', calcCredits)
+    });
+    calcCredits();
+
+    // Year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

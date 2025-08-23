@@ -1,7 +1,8 @@
 import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Video, Bot, Globe, Play } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Video, Bot, Globe, Play, CreditCard, Store, Check, Rocket, Sparkles, Building2, Cpu, ShoppingBag, Film, Library, Trophy, Mail, MessageCircle } from "lucide-react";
 
 export default function LandingPage() {
   const [, setLocation] = useLocation();
@@ -23,59 +24,330 @@ export default function LandingPage() {
       {/* Hero Content */}
       <div className="relative z-10 container mx-auto px-4 py-20 min-h-screen flex items-center">
         <div className="max-w-4xl">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            <span className="text-white">Capture Reality.</span><br />
+          <div className="inline-flex items-center gap-2 rounded-full px-3 py-1 bg-white/10 backdrop-blur-sm border border-white/20 text-xs mb-4">
+            <Bot className="w-3.5 h-3.5 text-cinema-gold" />
+            AI-driven production • We do the work
+          </div>
+          
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+            <span className="text-white">Subscriptions & Marketplace for</span><br />
             <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
-              Create Worlds.
+              Cinematic Virtual Production
             </span>
           </h1>
           
           <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl leading-relaxed">
-            High-end cinematic videos delivered using motion capture, AI, and virtual production — in just a few simple steps.
+            We produce your ads and media using AI-enhanced motion capture, photogrammetry, and video generation. You subscribe. You send inputs. <span className="font-semibold text-cinema-gold">We deliver.</span>
           </p>
           
-          {/* Features Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            <Card className="bg-white/5 backdrop-blur-sm border-white/10">
-              <CardContent className="p-6">
-                <Video className="text-cinema-gold h-8 w-8 mb-3" />
-                <h3 className="text-lg font-semibold mb-2">Motion Capture</h3>
-                <p className="text-gray-400 text-sm">
-                  Professional mocap technology for realistic character animation
-                </p>
-              </CardContent>
-            </Card>
-            
-            <Card className="bg-white/5 backdrop-blur-sm border-white/10">
-              <CardContent className="p-6">
-                <Bot className="text-cinema-gold h-8 w-8 mb-3" />
-                <h3 className="text-lg font-semibold mb-2">AI Enhancement</h3>
-                <p className="text-gray-400 text-sm">
-                  Cutting-edge AI for post-production and visual effects
-                </p>
-              </CardContent>
-            </Card>
-            
-            <Card className="bg-white/5 backdrop-blur-sm border-white/10">
-              <CardContent className="p-6">
-                <Globe className="text-cinema-gold h-8 w-8 mb-3" />
-                <h3 className="text-lg font-semibold mb-2">Virtual Worlds</h3>
-                <p className="text-gray-400 text-sm">
-                  Immersive virtual environments and digital sets
-                </p>
-              </CardContent>
-            </Card>
+          <div className="flex flex-wrap gap-3 mb-6">
+            <Button 
+              onClick={() => setLocation("/submit")}
+              className="gold-gradient hover:scale-105 transform transition-all duration-300 px-8 py-6 rounded-xl text-lg font-semibold text-cinema-dark shadow-2xl"
+            >
+              <CreditCard className="mr-2 h-5 w-5" />
+              See Plans
+            </Button>
+            <Button 
+              variant="outline"
+              className="border-white/20 bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white px-8 py-6 rounded-xl text-lg font-semibold"
+            >
+              <Store className="mr-2 h-5 w-5" />
+              Explore Marketplace
+            </Button>
           </div>
           
-          <Button 
-            onClick={() => setLocation("/submit")}
-            className="gold-gradient hover:scale-105 transform transition-all duration-300 px-12 py-6 rounded-full text-xl font-semibold text-cinema-dark shadow-2xl"
-          >
-            <Play className="mr-3 h-6 w-6" />
-            Start Your Project
-          </Button>
+          <ul className="grid gap-2 text-sm text-gray-300">
+            <li className="flex items-center gap-2">
+              <Check className="w-4 h-4 text-emerald-400" />
+              AI as production engine (not DIY)
+            </li>
+            <li className="flex items-center gap-2">
+              <Check className="w-4 h-4 text-emerald-400" />
+              Predictable subscriptions + flexible credits
+            </li>
+            <li className="flex items-center gap-2">
+              <Check className="w-4 h-4 text-emerald-400" />
+              Curated assets: photogrammetry, VP environments, media packs
+            </li>
+          </ul>
         </div>
       </div>
+
+      {/* Offering Section */}
+      <section className="relative z-10 mx-auto max-w-7xl px-6 py-16 bg-cinema-gray">
+        <div className="grid md:grid-cols-3 gap-6">
+          <Card className="bg-white/5 backdrop-blur-sm border-white/10 p-6">
+            <div className="w-10 h-10 rounded-xl bg-cinema-gold/90 grid place-items-center text-cinema-dark mb-4">
+              <CreditCard className="w-5 h-5" />
+            </div>
+            <h3 className="text-xl font-semibold text-white mb-2">Subscriptions</h3>
+            <p className="text-gray-300 mb-4">Predictable monthly access to production capacity and deliverables. We scope, schedule, and deliver on cadence.</p>
+            <ul className="space-y-2 text-sm">
+              <li className="flex gap-2">
+                <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                <span className="text-gray-300">AI-enhanced ad creation</span>
+              </li>
+              <li className="flex gap-2">
+                <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                <span className="text-gray-300">Motion capture cleanup</span>
+              </li>
+              <li className="flex gap-2">
+                <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                <span className="text-gray-300">Photogrammetry processing</span>
+              </li>
+            </ul>
+          </Card>
+
+          <Card className="bg-white/5 backdrop-blur-sm border-white/10 p-6">
+            <div className="w-10 h-10 rounded-xl bg-cinema-gold/90 grid place-items-center text-cinema-dark mb-4">
+              <Cpu className="w-5 h-5" />
+            </div>
+            <h3 className="text-xl font-semibold text-white mb-2">Pay-as-you-go Credits</h3>
+            <p className="text-gray-300 mb-4">Scale up for big campaigns or premium options without changing plans. Simple credit top-ups.</p>
+            <ul className="space-y-2 text-sm">
+              <li className="flex gap-2">
+                <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                <span className="text-gray-300">Outdoor scans</span>
+              </li>
+              <li className="flex gap-2">
+                <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                <span className="text-gray-300">Pro video variants</span>
+              </li>
+              <li className="flex gap-2">
+                <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                <span className="text-gray-300">Priority delivery</span>
+              </li>
+            </ul>
+          </Card>
+
+          <Card className="bg-white/5 backdrop-blur-sm border-white/10 p-6">
+            <div className="w-10 h-10 rounded-xl bg-cinema-gold/90 grid place-items-center text-cinema-dark mb-4">
+              <Store className="w-5 h-5" />
+            </div>
+            <h3 className="text-xl font-semibold text-white mb-2">Marketplace</h3>
+            <p className="text-gray-300 mb-4">Curated photogrammetry assets, VP-ready environments, and AI media packs. Start with first-party, open to creators later.</p>
+            <ul className="space-y-2 text-sm">
+              <li className="flex gap-2">
+                <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                <span className="text-gray-300">Smart tagging & search</span>
+              </li>
+              <li className="flex gap-2">
+                <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                <span className="text-gray-300">License clarity</span>
+              </li>
+              <li className="flex gap-2">
+                <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                <span className="text-gray-300">Instant previews</span>
+              </li>
+            </ul>
+          </Card>
+        </div>
+      </section>
+
+      {/* How it works */}
+      <section className="relative z-10 mx-auto max-w-7xl px-6 py-16 bg-cinema-gray">
+        <h3 className="text-2xl font-bold text-white mb-6">How it works</h3>
+        <div className="grid md:grid-cols-4 gap-6">
+          <Card className="bg-white/5 backdrop-blur-sm border-white/10 p-6">
+            <div className="text-sm text-gray-400 mb-2">Step 1</div>
+            <h4 className="font-semibold text-white mb-2">Subscribe</h4>
+            <p className="text-sm text-gray-300">Choose a plan that fits your monthly output.</p>
+          </Card>
+          <Card className="bg-white/5 backdrop-blur-sm border-white/10 p-6">
+            <div className="text-sm text-gray-400 mb-2">Step 2</div>
+            <h4 className="font-semibold text-white mb-2">Send Inputs</h4>
+            <p className="text-sm text-gray-300">Footage, products, references, brand guides.</p>
+          </Card>
+          <Card className="bg-white/5 backdrop-blur-sm border-white/10 p-6">
+            <div className="text-sm text-gray-400 mb-2">Step 3</div>
+            <h4 className="font-semibold text-white mb-2">AI + Team Produce</h4>
+            <p className="text-sm text-gray-300">Mocap cleanup, photogrammetry, AI video & VFX.</p>
+          </Card>
+          <Card className="bg-white/5 backdrop-blur-sm border-white/10 p-6">
+            <div className="text-sm text-gray-400 mb-2">Step 4</div>
+            <h4 className="font-semibold text-white mb-2">Deliver</h4>
+            <p className="text-sm text-gray-300">Cinematic ads and assets on time, every month.</p>
+          </Card>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section className="relative z-10 mx-auto max-w-7xl px-6 py-16 bg-cinema-gray">
+        <div className="text-center mb-12">
+          <h3 className="text-3xl font-bold text-white mb-4">Pricing</h3>
+          <p className="text-gray-300">Choose the plan that fits your production needs</p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-8">
+          {/* Starter */}
+          <Card className="bg-white/5 backdrop-blur-sm border-white/10 p-8 flex flex-col">
+            <div className="flex items-center gap-2 mb-4">
+              <Rocket className="w-5 h-5 text-cinema-gold" />
+              <h4 className="font-semibold text-lg text-white">Starter</h4>
+            </div>
+            <p className="text-sm text-gray-300 mb-4">For creators & small brands testing VP content.</p>
+            <div className="mb-6">
+              <span className="text-3xl font-bold text-white">$2,999</span>
+              <span className="text-gray-400"> / mo</span>
+            </div>
+            <ul className="space-y-3 text-sm flex-1 mb-6">
+              <li className="flex gap-2">
+                <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                <span className="text-gray-300">1 short ad / mo</span>
+              </li>
+              <li className="flex gap-2">
+                <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                <span className="text-gray-300">Basic mocap cleanup</span>
+              </li>
+              <li className="flex gap-2">
+                <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                <span className="text-gray-300">Standard delivery</span>
+              </li>
+            </ul>
+            <Button 
+              onClick={() => setLocation("/submit")}
+              className="w-full bg-cinema-slate hover:bg-gray-600 text-white"
+            >
+              Select Plan
+            </Button>
+          </Card>
+
+          {/* Pro */}
+          <Card className="bg-white/5 backdrop-blur-sm border-cinema-gold p-8 flex flex-col relative">
+            <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-cinema-gold text-cinema-dark">
+              Popular
+            </Badge>
+            <div className="flex items-center gap-2 mb-4">
+              <Sparkles className="w-5 h-5 text-cinema-gold" />
+              <h4 className="font-semibold text-lg text-white">Pro</h4>
+            </div>
+            <p className="text-sm text-gray-300 mb-4">For marketing teams shipping regular campaigns.</p>
+            <div className="mb-6">
+              <span className="text-3xl font-bold text-white">$7,999</span>
+              <span className="text-gray-400"> / mo</span>
+            </div>
+            <ul className="space-y-3 text-sm flex-1 mb-6">
+              <li className="flex gap-2">
+                <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                <span className="text-gray-300">3 ads or variants / mo</span>
+              </li>
+              <li className="flex gap-2">
+                <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                <span className="text-gray-300">Photogrammetry processing (indoor)</span>
+              </li>
+              <li className="flex gap-2">
+                <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                <span className="text-gray-300">Priority revisions</span>
+              </li>
+            </ul>
+            <Button 
+              onClick={() => setLocation("/submit")}
+              className="w-full gold-gradient text-cinema-dark font-semibold"
+            >
+              Select Plan
+            </Button>
+          </Card>
+
+          {/* Studio */}
+          <Card className="bg-white/5 backdrop-blur-sm border-white/10 p-8 flex flex-col">
+            <div className="flex items-center gap-2 mb-4">
+              <Building2 className="w-5 h-5 text-cinema-gold" />
+              <h4 className="font-semibold text-lg text-white">Studio</h4>
+            </div>
+            <p className="text-sm text-gray-300 mb-4">For larger brands & agencies with high output.</p>
+            <div className="mb-6">
+              <span className="text-3xl font-bold text-white">$15,999</span>
+              <span className="text-gray-400"> / mo</span>
+            </div>
+            <ul className="space-y-3 text-sm flex-1 mb-6">
+              <li className="flex gap-2">
+                <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                <span className="text-gray-300">8 ads / variants / mo</span>
+              </li>
+              <li className="flex gap-2">
+                <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                <span className="text-gray-300">Indoor + outdoor photogrammetry</span>
+              </li>
+              <li className="flex gap-2">
+                <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                <span className="text-gray-300">Fast-track delivery</span>
+              </li>
+            </ul>
+            <Button 
+              onClick={() => setLocation("/submit")}
+              variant="outline"
+              className="w-full border-white/20 text-white hover:bg-white/10"
+            >
+              Select Plan
+            </Button>
+          </Card>
+        </div>
+      </section>
+
+      {/* Who we help */}
+      <section className="relative z-10 mx-auto max-w-7xl px-6 py-16 bg-cinema-gray">
+        <h3 className="text-2xl font-bold text-white mb-6">Who we help</h3>
+        <div className="grid md:grid-cols-4 gap-6">
+          <Card className="bg-white/5 backdrop-blur-sm border-white/10 p-6">
+            <ShoppingBag className="w-5 h-5 text-cinema-gold mb-3" />
+            <h4 className="font-semibold text-white mb-2">Brands & Marketing</h4>
+            <p className="text-gray-300 text-sm">Always-on ad content, faster cycles.</p>
+          </Card>
+          <Card className="bg-white/5 backdrop-blur-sm border-white/10 p-6">
+            <Film className="w-5 h-5 text-cinema-gold mb-3" />
+            <h4 className="font-semibold text-white mb-2">Film & Streaming</h4>
+            <p className="text-gray-300 text-sm">Virtual sets, mocap, previz.</p>
+          </Card>
+          <Card className="bg-white/5 backdrop-blur-sm border-white/10 p-6">
+            <Library className="w-5 h-5 text-cinema-gold mb-3" />
+            <h4 className="font-semibold text-white mb-2">Culture & Heritage</h4>
+            <p className="text-gray-300 text-sm">Digitization & immersive exhibits.</p>
+          </Card>
+          <Card className="bg-white/5 backdrop-blur-sm border-white/10 p-6">
+            <Trophy className="w-5 h-5 text-cinema-gold mb-3" />
+            <h4 className="font-semibold text-white mb-2">Sports</h4>
+            <p className="text-gray-300 text-sm">High-impact promos, motion analysis.</p>
+          </Card>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section className="relative z-10 mx-auto max-w-7xl px-6 py-24 bg-cinema-gray">
+        <Card className="bg-white/5 backdrop-blur-sm border-white/10 p-8 md:p-10">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div>
+              <h3 className="text-2xl font-bold text-white mb-4">Ready to ship cinematic content on a subscription?</h3>
+              <p className="text-gray-300 mb-6">Tell us about your brand and monthly goals. We'll propose the right plan.</p>
+              <div className="space-y-3">
+                <a className="inline-flex items-center gap-2 text-cinema-gold hover:text-yellow-300 transition-colors" href="mailto:hello@virtualproduction.com">
+                  <Mail className="w-4 h-4" />
+                  hello@virtualproduction.com
+                </a>
+                <br />
+                <a className="inline-flex items-center gap-2 text-cinema-gold hover:text-yellow-300 transition-colors" href="#" target="_blank">
+                  <MessageCircle className="w-4 h-4" />
+                  WhatsApp us
+                </a>
+              </div>
+            </div>
+            <div className="space-y-4">
+              <Button 
+                onClick={() => setLocation("/submit")}
+                className="w-full gold-gradient text-cinema-dark font-semibold py-3"
+              >
+                Request Proposal
+              </Button>
+              <Button 
+                variant="outline"
+                className="w-full border-white/20 text-white hover:bg-white/10 py-3"
+              >
+                Schedule Demo
+              </Button>
+            </div>
+          </div>
+        </Card>
+      </section>
       
       {/* Footer */}
       <footer className="bg-cinema-gray border-t border-gray-800 py-12 relative z-10">
