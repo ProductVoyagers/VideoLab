@@ -11,6 +11,8 @@ import MarketplacePage from "@/pages/marketplace";
 import CreditsPage from "@/pages/credits";
 import SubscriptionPage from "@/pages/subscription";
 import PayAsYouGoPage from "@/pages/pay-as-you-go";
+import SubscriptionUploadPage from "@/pages/subscription-upload";
+import PayGUploadPage from "@/pages/payg-upload";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -23,7 +25,9 @@ function Router() {
         <Route path="/marketplace" component={MarketplacePage} />
         <Route path="/credits" component={CreditsPage} />
         <Route path="/subscription" component={SubscriptionPage} />
+        <Route path="/subscription/upload" component={SubscriptionUploadPage} />
         <Route path="/pay-as-you-go" component={PayAsYouGoPage} />
+        <Route path="/pay-as-you-go/upload" component={PayGUploadPage} />
         <Route path="/admin" component={AdminDashboard} />
         <Route component={NotFound} />
       </Switch>

@@ -154,16 +154,28 @@ export default function PayAsYouGoPage() {
 
         {/* Purchase Button */}
         <div className="text-center mt-12">
-          <Button 
-            size="lg"
-            className="gold-gradient text-cinema-dark font-semibold px-12 py-4 text-lg"
-            disabled={!selectedKit}
-            data-testid="button-purchase"
-          >
-            <CreditCard className="w-5 h-5 mr-2" />
-            Purchase {selectedKit ? payAsYouGoKits[selectedKit]?.name : "Kit"}
-            <ArrowRight className="w-5 h-5 ml-2" />
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button 
+              onClick={() => setLocation("/pay-as-you-go/upload")}
+              size="lg"
+              className="gold-gradient text-cinema-dark font-semibold px-12 py-4 text-lg"
+              disabled={!selectedKit}
+              data-testid="button-purchase"
+            >
+              <CreditCard className="w-5 h-5 mr-2" />
+              Purchase {selectedKit ? payAsYouGoKits[selectedKit]?.name : "Kit"}
+              <ArrowRight className="w-5 h-5 ml-2" />
+            </Button>
+            <Button 
+              onClick={() => setLocation("/pay-as-you-go/upload")}
+              variant="outline"
+              size="lg"
+              className="border-white/20 text-white hover:bg-white/10 px-12 py-4 text-lg"
+              disabled={!selectedKit}
+            >
+              Submit Project Details
+            </Button>
+          </div>
         </div>
       </section>
 
@@ -283,10 +295,11 @@ export default function PayAsYouGoPage() {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button 
+            onClick={() => setLocation("/pay-as-you-go/upload")}
             className="gold-gradient text-cinema-dark font-semibold px-8"
             disabled={!selectedKit}
           >
-            Purchase Selected Kit
+            Submit Project & Purchase Kit
           </Button>
           <Button 
             onClick={() => setLocation("/marketplace")}
