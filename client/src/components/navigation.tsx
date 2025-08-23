@@ -1,5 +1,5 @@
 import { Link, useLocation } from "wouter";
-import { Video, Settings, Home, Store, CreditCard } from "lucide-react";
+import { Video, Settings, Home, Store, CreditCard, Package2 } from "lucide-react";
 
 export default function Navigation() {
   const [location] = useLocation();
@@ -20,13 +20,17 @@ export default function Navigation() {
           <Link href="/" className={`transition-colors ${location === '/' ? 'text-cinema-gold' : 'text-gray-300 hover:text-cinema-gold'}`}>
             Home
           </Link>
+          <Link href="/subscription" className={`transition-colors flex items-center space-x-1 ${location === '/subscription' ? 'text-cinema-gold' : 'text-gray-300 hover:text-cinema-gold'}`}>
+            <CreditCard className="w-4 h-4" />
+            <span>Subscription</span>
+          </Link>
+          <Link href="/pay-as-you-go" className={`transition-colors flex items-center space-x-1 ${location === '/pay-as-you-go' ? 'text-cinema-gold' : 'text-gray-300 hover:text-cinema-gold'}`}>
+            <Package2 className="w-4 h-4" />
+            <span>Pay-As-You-Go</span>
+          </Link>
           <Link href="/marketplace" className={`transition-colors flex items-center space-x-1 ${location === '/marketplace' ? 'text-cinema-gold' : 'text-gray-300 hover:text-cinema-gold'}`}>
             <Store className="w-4 h-4" />
             <span>Marketplace</span>
-          </Link>
-          <Link href="/credits" className={`transition-colors flex items-center space-x-1 ${location === '/credits' ? 'text-cinema-gold' : 'text-gray-300 hover:text-cinema-gold'}`}>
-            <CreditCard className="w-4 h-4" />
-            <span>Credits</span>
           </Link>
           <Link href="/admin">
             <button className="bg-cinema-slate px-4 py-2 rounded-lg hover:bg-gray-600 transition-colors flex items-center space-x-2">

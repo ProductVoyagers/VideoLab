@@ -20,7 +20,7 @@ import { ArrowLeft, ArrowRight, CheckCircle, Plus, Search } from "lucide-react";
 import { getEstimatedDeliveryDate } from "@/lib/utils";
 
 const formSchema = insertSubmissionSchema.extend({
-  packageType: z.enum(["lite", "signature", "immersive"]),
+  packageType: z.enum(["starter", "pro", "premium"]),
 });
 
 export default function SubmissionWizard() {
@@ -38,7 +38,7 @@ export default function SubmissionWizard() {
       projectName: "",
       brandName: "",
       projectGoals: "",
-      packageType: "signature" as PackageType,
+      packageType: "pro" as PackageType,
       timeline: "",
       additionalNotes: "",
       status: "received",

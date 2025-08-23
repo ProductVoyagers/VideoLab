@@ -12,6 +12,10 @@ interface PackageCardProps {
 export default function PackageCard({ packageKey, isSelected, onSelect, isPopular }: PackageCardProps) {
   const packageData = packageTypes[packageKey];
   
+  if (!packageData) {
+    return null; // Handle missing package data gracefully
+  }
+  
   const getIcon = () => {
     switch (packageKey) {
       case 'starter':

@@ -42,11 +42,11 @@ export default function LandingPage() {
           
           <div className="flex flex-wrap gap-3 mb-6">
             <Button 
-              onClick={() => setLocation("/submit")}
+              onClick={() => setLocation("/subscription")}
               className="gold-gradient hover:scale-105 transform transition-all duration-300 px-8 py-6 rounded-xl text-lg font-semibold text-cinema-dark shadow-2xl"
             >
               <CreditCard className="mr-2 h-5 w-5" />
-              See Plans
+              View Subscriptions
             </Button>
             <Button 
               onClick={() => setLocation("/marketplace")}
@@ -104,15 +104,15 @@ export default function LandingPage() {
             <div className="w-10 h-10 rounded-xl bg-cinema-gold/90 grid place-items-center text-cinema-dark mb-4">
               <Cpu className="w-5 h-5" />
             </div>
-            <h3 className="text-xl font-semibold text-white mb-2">Pay-as-you-go Credits</h3>
-            <p className="text-gray-300 mb-4">Scale up for big campaigns or premium options without changing plans. Simple credit top-ups.</p>
+            <h3 className="text-xl font-semibold text-white mb-2">Pay-as-you-go Kits</h3>
+            <p className="text-gray-300 mb-4">Individual production kits for one-off projects. Fixed pricing, no subscription required.</p>
             <Button 
-              onClick={() => setLocation("/credits")}
+              onClick={() => setLocation("/pay-as-you-go")}
               variant="outline" 
               size="sm" 
               className="border-white/20 text-white hover:bg-white/10 mt-4"
             >
-              Buy Credits
+              Browse Kits
             </Button>
             <ul className="space-y-2 text-sm">
               <li className="flex gap-2">
