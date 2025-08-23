@@ -253,7 +253,11 @@ export default function MarketplacePage() {
                         </span>
                       )}
                     </div>
-                    <Button className="gold-gradient text-cinema-dark font-semibold" data-testid={`button-download-${asset.id}`}>
+                    <Button 
+                      size="default"
+                      className="gold-gradient text-cinema-dark font-semibold" 
+                      data-testid={`button-download-${asset.id}`}
+                    >
                       <Download className="w-4 h-4 mr-2" />
                       Buy Now
                     </Button>

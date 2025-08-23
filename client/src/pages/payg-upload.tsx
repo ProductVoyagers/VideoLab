@@ -339,7 +339,7 @@ export default function PayGUploadPage() {
                                 variant="ghost"
                                 size="sm"
                                 onClick={() => removeFile(index)}
-                                className="text-red-400 hover:text-red-300"
+                                className="text-red-400 hover:text-red-300 shrink-0"
                               >
                                 Remove
                               </Button>
@@ -352,7 +352,8 @@ export default function PayGUploadPage() {
                     {/* Submit Button */}
                     <Button
                       type="submit"
-                      className="w-full gold-gradient text-cinema-dark font-semibold py-3"
+                      size="lg"
+                      className="w-full gold-gradient text-cinema-dark font-semibold"
                       disabled={isSubmitting}
                       data-testid="button-submit-project"
                     >

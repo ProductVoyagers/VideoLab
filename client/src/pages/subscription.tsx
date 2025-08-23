@@ -51,10 +51,10 @@ export default function SubscriptionPage() {
 
         {/* Billing Toggle */}
         <div className="flex justify-center mb-12">
-          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-1 flex">
+          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-1 flex items-center">
             <button
               onClick={() => setBillingCycle("monthly")}
-              className={`px-6 py-2 rounded-lg font-medium transition-all ${
+              className={`px-6 py-3 rounded-lg font-medium transition-all flex items-center justify-center ${
                 billingCycle === "monthly"
                   ? "bg-cinema-gold text-cinema-dark"
                   : "text-gray-300 hover:text-white"
@@ -65,7 +65,7 @@ export default function SubscriptionPage() {
             </button>
             <button
               onClick={() => setBillingCycle("quarterly")}
-              className={`px-6 py-2 rounded-lg font-medium transition-all ${
+              className={`px-6 py-3 rounded-lg font-medium transition-all flex items-center justify-center ${
                 billingCycle === "quarterly"
                   ? "bg-cinema-gold text-cinema-dark"
                   : "text-gray-300 hover:text-white"
@@ -135,6 +135,7 @@ export default function SubscriptionPage() {
                   </ul>
                   
                   <Button 
+                    size="lg"
                     className={`w-full ${
                       isSelected 
                         ? "gold-gradient text-cinema-dark font-semibold" 
@@ -152,11 +153,11 @@ export default function SubscriptionPage() {
 
         {/* Subscribe Button */}
         <div className="text-center mt-12">
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button 
               onClick={() => setLocation("/subscription/upload")}
               size="lg"
-              className="gold-gradient text-cinema-dark font-semibold px-12 py-4 text-lg"
+              className="gold-gradient text-cinema-dark font-semibold text-lg"
               disabled={!selectedPlan}
               data-testid="button-subscribe"
             >
@@ -168,7 +169,7 @@ export default function SubscriptionPage() {
               onClick={() => setLocation("/subscription/upload")}
               variant="outline"
               size="lg"
-              className="border-white/20 text-white hover:bg-white/10 px-12 py-4 text-lg"
+              className="border-white/20 text-white hover:bg-white/10 text-lg"
               disabled={!selectedPlan}
             >
               Submit Project
@@ -225,16 +226,18 @@ export default function SubscriptionPage() {
           Join hundreds of creators, agencies, and brands using Virtual Media Production 
           to streamline their content creation workflow.
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <Button 
             onClick={() => setLocation("/subscription/upload")}
-            className="gold-gradient text-cinema-dark font-semibold px-8"
+            size="lg"
+            className="gold-gradient text-cinema-dark font-semibold"
           >
             Start Your Subscription
           </Button>
           <Button 
             onClick={() => setLocation("/pay-as-you-go")}
             variant="outline"
+            size="lg"
             className="border-white/20 text-white hover:bg-white/10"
           >
             Try Pay-As-You-Go First

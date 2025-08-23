@@ -139,7 +139,7 @@ export default function PayAsYouGoPage() {
                               : "bg-cinema-slate hover:bg-gray-600 text-white"
                           }`}
                           data-testid={`button-select-${key}`}
-                          size="sm"
+                          size="default"
                         >
                           {isSelected ? "Selected" : "Select Kit"}
                         </Button>
@@ -154,11 +154,11 @@ export default function PayAsYouGoPage() {
 
         {/* Purchase Button */}
         <div className="text-center mt-12">
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button 
               onClick={() => setLocation("/pay-as-you-go/upload")}
               size="lg"
-              className="gold-gradient text-cinema-dark font-semibold px-12 py-4 text-lg"
+              className="gold-gradient text-cinema-dark font-semibold text-lg"
               disabled={!selectedKit}
               data-testid="button-purchase"
             >
@@ -170,7 +170,7 @@ export default function PayAsYouGoPage() {
               onClick={() => setLocation("/pay-as-you-go/upload")}
               variant="outline"
               size="lg"
-              className="border-white/20 text-white hover:bg-white/10 px-12 py-4 text-lg"
+              className="border-white/20 text-white hover:bg-white/10 text-lg"
               disabled={!selectedKit}
             >
               Submit Project Details
@@ -277,6 +277,7 @@ export default function PayAsYouGoPage() {
               
               <Button 
                 onClick={() => setLocation("/subscription")}
+                size="lg"
                 className="w-full mt-6 bg-cinema-gold hover:bg-cinema-gold/90 text-cinema-dark font-semibold"
               >
                 View Subscription Plans
@@ -293,10 +294,11 @@ export default function PayAsYouGoPage() {
           Choose the payment model that works best for your project needs. 
           Both options deliver the same high-quality Virtual Media Production services.
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <Button 
             onClick={() => setLocation("/pay-as-you-go/upload")}
-            className="gold-gradient text-cinema-dark font-semibold px-8"
+            size="lg"
+            className="gold-gradient text-cinema-dark font-semibold"
             disabled={!selectedKit}
           >
             Submit Project & Purchase Kit
@@ -304,6 +306,7 @@ export default function PayAsYouGoPage() {
           <Button 
             onClick={() => setLocation("/marketplace")}
             variant="outline"
+            size="lg"
             className="border-white/20 text-white hover:bg-white/10"
           >
             Browse Asset Marketplace

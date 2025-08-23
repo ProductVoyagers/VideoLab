@@ -40,10 +40,11 @@ export default function LandingPage() {
             We produce your ads and media using AI-enhanced motion capture, photogrammetry, and video generation. You subscribe. You send inputs. <span className="font-semibold text-cinema-gold">We deliver.</span>
           </p>
           
-          <div className="flex flex-wrap gap-3 mb-6">
+          <div className="flex flex-col sm:flex-row gap-4 justify-start mb-6">
             <Button 
               onClick={() => setLocation("/subscription")}
-              className="gold-gradient hover:scale-105 transform transition-all duration-300 px-8 py-6 rounded-xl text-lg font-semibold text-cinema-dark shadow-2xl"
+              size="lg"
+              className="gold-gradient hover:scale-105 transform transition-all duration-300 text-lg font-semibold text-cinema-dark shadow-2xl"
             >
               <CreditCard className="mr-2 h-5 w-5" />
               View Subscriptions
@@ -51,7 +52,8 @@ export default function LandingPage() {
             <Button 
               onClick={() => setLocation("/marketplace")}
               variant="outline"
-              className="border-white/20 bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white px-8 py-6 rounded-xl text-lg font-semibold"
+              size="lg"
+              className="border-white/20 bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white text-lg font-semibold"
             >
               <Store className="mr-2 h-5 w-5" />
               Explore Marketplace
@@ -110,7 +112,7 @@ export default function LandingPage() {
               onClick={() => setLocation("/pay-as-you-go")}
               variant="outline" 
               size="sm" 
-              className="border-white/20 text-white hover:bg-white/10 mt-4"
+              className="border-white/20 text-white hover:bg-white/10 mt-4 w-full"
             >
               Browse Kits
             </Button>
@@ -140,7 +142,7 @@ export default function LandingPage() {
               onClick={() => setLocation("/marketplace")}
               variant="outline" 
               size="sm" 
-              className="border-white/20 text-white hover:bg-white/10 mt-4"
+              className="border-white/20 text-white hover:bg-white/10 mt-4 w-full"
             >
               Browse Assets
             </Button>
@@ -225,6 +227,7 @@ export default function LandingPage() {
             </ul>
             <Button 
               onClick={() => setLocation("/submit")}
+              size="lg"
               className="w-full bg-cinema-slate hover:bg-gray-600 text-white"
             >
               Select Plan
@@ -262,6 +265,7 @@ export default function LandingPage() {
             </ul>
             <Button 
               onClick={() => setLocation("/submit")}
+              size="lg"
               className="w-full gold-gradient text-cinema-dark font-semibold"
             >
               Select Plan
@@ -297,6 +301,7 @@ export default function LandingPage() {
             <Button 
               onClick={() => setLocation("/submit")}
               variant="outline"
+              size="lg"
               className="w-full border-white/20 text-white hover:bg-white/10"
             >
               Select Plan
@@ -354,13 +359,15 @@ export default function LandingPage() {
             <div className="space-y-4">
               <Button 
                 onClick={() => setLocation("/submit")}
-                className="w-full gold-gradient text-cinema-dark font-semibold py-3"
+                size="lg"
+                className="w-full gold-gradient text-cinema-dark font-semibold"
               >
                 Request Proposal
               </Button>
               <Button 
                 variant="outline"
-                className="w-full border-white/20 text-white hover:bg-white/10 py-3"
+                size="lg"
+                className="w-full border-white/20 text-white hover:bg-white/10"
               >
                 Schedule Demo
               </Button>
