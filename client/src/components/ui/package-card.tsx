@@ -14,14 +14,14 @@ export default function PackageCard({ packageKey, isSelected, onSelect, isPopula
   
   const getIcon = () => {
     switch (packageKey) {
-      case 'lite':
-        return '✅';
-      case 'signature':
-        return '🎥';
-      case 'immersive':
-        return '🌍';
+      case 'starter':
+        return '🚀';
+      case 'pro':
+        return '✨';
+      case 'premium':
+        return '🏢';
       default:
-        return '✅';
+        return '🚀';
     }
   };
 

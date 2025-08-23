@@ -11,7 +11,7 @@ export default function Navigation() {
           <div className="flex items-center space-x-2 cursor-pointer">
             <Video className="text-cinema-gold text-2xl" />
             <span className="text-xl font-bold bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
-              VirtualPro Studios
+              Virtual Media Production
             </span>
           </div>
         </Link>

@@ -30,9 +30,9 @@ export default function LandingPage() {
           </div>
           
           <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-            <span className="text-white">Subscriptions & Marketplace for</span><br />
+            <span className="text-white">Virtual Media Production</span><br />
             <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
-              Cinematic Virtual Production
+              Made Simple
             </span>
           </h1>
           

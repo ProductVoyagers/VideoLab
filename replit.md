@@ -1,8 +1,8 @@
-# Virtual Production Client Portal
+# Virtual Media Production Client Portal
 
 ## Overview
 
-This is a comprehensive virtual production client portal featuring subscription-based services, a marketplace for digital assets, and pay-as-you-go credit system. The application serves as a professional production service platform where clients can subscribe to monthly production packages (SAR 15,000-65,000), purchase individual assets through the marketplace, or buy pay-as-you-go kits for flexible project needs. It includes a cinematic video background, modern UI with subscription-focused messaging, marketplace browsing with asset categories (photogrammetry, environments, mocap, media packs), credit management system, admin dashboard for submissions, and seamless integration between subscription services and marketplace functionality.
+This is a comprehensive Virtual Media Production client portal featuring subscription-based services, a marketplace for digital assets, and pay-as-you-go credit system. The application serves as a professional production service platform where clients can subscribe to monthly production packages (SAR 15,000-65,000), purchase individual assets through the marketplace, or buy pay-as-you-go kits for flexible project needs. It includes a cinematic video background, modern UI with subscription-focused messaging, marketplace browsing with asset categories (photogrammetry, environments, mocap, media packs), credit management system, admin dashboard for submissions, and seamless integration between subscription services and marketplace functionality.
 
 ## User Preferences
 
