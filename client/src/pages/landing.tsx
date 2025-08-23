@@ -418,7 +418,7 @@ export default function LandingPage() {
                 <img 
                   src={vmpLogo} 
                   alt="VMP - Virtual Media Production" 
-                  className="h-16 w-auto"
+                  className="h-20 w-auto"
                 />
               </div>
               <p className="text-gray-400 text-sm">

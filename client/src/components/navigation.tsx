@@ -13,7 +13,7 @@ export default function Navigation() {
             <img 
               src={vmpLogo} 
               alt="VMP - Virtual Media Production" 
-              className="h-10 w-auto"
+              className="h-14 w-auto"
             />
           </div>
         </Link>
