@@ -26,42 +26,45 @@ export type Submission = typeof submissions.$inferSelect;
 
 // Package types enum
 export const packageTypes = {
-  lite: {
-    name: "Virtual Ad Lite",
-    price: "$2,999",
-    description: "Perfect for social media campaigns and promotional content",
+  starter: {
+    name: "Starter Kit",
+    price: "SAR 15,000",
+    credits: 10,
+    description: "Ideal for small agencies and freelancers testing virtual production",
     features: [
-      "30-60 second video",
-      "Basic virtual environment", 
-      "1 revision included",
-      "3-5 day delivery",
-      "HD 1080p output"
+      "10 credits per month",
+      "5 MoCap Basic sessions OR 2 outdoor photogrammetry scans",
+      "Priority scheduling",
+      "20% credit rollover",
+      "3-5 day delivery"
     ]
   },
-  signature: {
-    name: "Signature Scene", 
-    price: "$7,999",
-    description: "Full production with custom virtual environments and advanced effects",
+  pro: {
+    name: "Pro Kit", 
+    price: "SAR 35,000",
+    credits: 25,
+    description: "Perfect for mid-size agencies and production companies",
     features: [
-      "2-5 minute video",
-      "Custom virtual set design",
-      "Motion capture integration", 
-      "3 revisions included",
-      "5-7 day delivery",
-      "4K output available"
+      "25 credits per month",
+      "8 MoCap Basic + 2 outdoor photogrammetry scans",
+      "Priority scheduling",
+      "20% credit rollover",
+      "Advanced cleanup included",
+      "3-5 day delivery"
     ]
   },
-  immersive: {
-    name: "Immersive Experience",
-    price: "$15,999", 
-    description: "Premium immersive content with VR/AR capabilities",
+  premium: {
+    name: "Premium Kit",
+    price: "SAR 65,000",
+    credits: 50,
+    description: "Ideal for large brands, government projects, and high-volume productions",
     features: [
-      "5-10 minute experience",
-      "360° immersive environment",
-      "VR/AR compatibility",
-      "Unlimited revisions",
-      "7-10 day delivery", 
-      "8K output available"
+      "50 credits per month",
+      "10 MoCap Basic + 4 outdoor photogrammetry scans",
+      "Priority scheduling",
+      "20% credit rollover",
+      "All advanced features",
+      "Fastest delivery (3-5 days)"
     ]
   }
 } as const;
@@ -112,47 +115,95 @@ export const insertUserCreditsSchema = createInsertSchema(userCredits).omit({
 export type InsertUserCredits = z.infer<typeof insertUserCreditsSchema>;
 export type UserCredits = typeof userCredits.$inferSelect;
 
-// Credit Packages for Pay-as-you-go
-export const creditPackages = {
-  starter: {
-    name: "Starter Pack",
-    credits: 100,
-    price: 99, // $99 for 100 credits
-    description: "Perfect for trying individual services",
+// Pay-As-You-Go Individual Kits
+export const payAsYouGoKits = {
+  mocapBasic: {
+    name: "MotionCapture+ Basic Kit",
+    price: "SAR 3,000", // 2 credits × SAR 1,500
+    description: "1hr AI mocap with basic cleanup",
     features: [
-      "100 production credits",
-      "Basic asset downloads",
-      "Standard processing priority",
-      "6 month expiry"
-    ]
+      "1 hour AI motion capture session",
+      "Basic cleanup and processing",
+      "FBX + OBJ output formats",
+      "3-5 business day delivery"
+    ],
+    credits: 2
   },
-  pro: {
-    name: "Pro Pack", 
-    credits: 500,
-    price: 399, // $399 for 500 credits (20% discount)
-    description: "Great for regular project needs",
+  mocapPro: {
+    name: "MotionCapture+ Pro Kit", 
+    price: "SAR 6,000", // 4 credits × SAR 1,500
+    description: "2hr AI mocap with advanced cleanup",
     features: [
-      "500 production credits",
-      "Premium asset access",
-      "Priority processing",
-      "12 month expiry"
-    ]
+      "2 hour AI motion capture session",
+      "Advanced cleanup and processing",
+      "Multiple output formats",
+      "3-5 business day delivery"
+    ],
+    credits: 4
   },
-  studio: {
-    name: "Studio Pack",
-    credits: 1500,
-    price: 999, // $999 for 1500 credits (33% discount)
-    description: "Maximum flexibility for agencies",
+  photoscanIndoor: {
+    name: "PhotoScan360 Indoor",
+    price: "SAR 1,500", // 1 credit × SAR 1,500
+    description: "Single prop/object photogrammetry scan",
     features: [
-      "1500 production credits", 
-      "All premium assets included",
-      "Fastest processing priority",
-      "No expiry"
-    ]
+      "1 prop/object scan",
+      "PBR 4K textures included",
+      "Multiple output formats",
+      "7 day delivery"
+    ],
+    credits: 1
+  },
+  photoscanOutdoor: {
+    name: "PhotoScan360 Outdoor",
+    price: "SAR 7,500", // 5 credits × SAR 1,500
+    description: "Full-day location photogrammetry",
+    features: [
+      "Full-day location scan",
+      "HDRI capture included",
+      "High-resolution textures",
+      "10-12 day delivery"
+    ],
+    credits: 5
+  },
+  photoscanHybrid: {
+    name: "PhotoScan360 Hybrid",
+    price: "SAR 9,000", // 6 credits × SAR 1,500
+    description: "Indoor + outdoor integrated assets",
+    features: [
+      "Combined indoor/outdoor scanning",
+      "Integrated asset delivery",
+      "Premium processing",
+      "10-12 day delivery"
+    ],
+    credits: 6
+  },
+  videoBoostStandard: {
+    name: "VideoBoostAI Standard",
+    price: "SAR 1,500", // 1 credit × SAR 1,500
+    description: "AI 4K upscale and stabilization",
+    features: [
+      "AI 4K upscaling",
+      "Video stabilization",
+      "Up to 2 minutes footage",
+      "3-5 day delivery"
+    ],
+    credits: 1
+  },
+  videoBoostPro: {
+    name: "VideoBoostAI Pro",
+    price: "SAR 4,500", // 3 credits × SAR 1,500
+    description: "8K upscale with color grading",
+    features: [
+      "AI 8K upscaling",
+      "Color grading included",
+      "Style transfer options",
+      "3-5 day delivery"
+    ],
+    credits: 3
   }
 } as const;
 
-export type CreditPackage = keyof typeof creditPackages;
+export type PayAsYouGoKit = keyof typeof payAsYouGoKits;
 
 // Asset Categories
 export const assetCategories = {

@@ -197,29 +197,30 @@ export default function LandingPage() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {/* Starter */}
+          {/* Starter Kit */}
           <Card className="bg-white/5 backdrop-blur-sm border-white/10 p-8 flex flex-col">
             <div className="flex items-center gap-2 mb-4">
               <Rocket className="w-5 h-5 text-cinema-gold" />
-              <h4 className="font-semibold text-lg text-white">Starter</h4>
+              <h4 className="font-semibold text-lg text-white">Starter Kit</h4>
             </div>
-            <p className="text-sm text-gray-300 mb-4">For creators & small brands testing VP content.</p>
+            <p className="text-sm text-gray-300 mb-4">Ideal for small agencies and freelancers testing virtual production.</p>
             <div className="mb-6">
-              <span className="text-3xl font-bold text-white">$2,999</span>
+              <span className="text-3xl font-bold text-white">SAR 15,000</span>
               <span className="text-gray-400"> / mo</span>
+              <div className="text-sm text-cinema-gold">10 credits</div>
             </div>
             <ul className="space-y-3 text-sm flex-1 mb-6">
               <li className="flex gap-2">
                 <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
-                <span className="text-gray-300">1 short ad / mo</span>
+                <span className="text-gray-300">5 MoCap Basic sessions OR 2 outdoor scans</span>
               </li>
               <li className="flex gap-2">
                 <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
-                <span className="text-gray-300">Basic mocap cleanup</span>
+                <span className="text-gray-300">Priority scheduling</span>
               </li>
               <li className="flex gap-2">
                 <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
-                <span className="text-gray-300">Standard delivery</span>
+                <span className="text-gray-300">20% credit rollover</span>
               </li>
             </ul>
             <Button 
@@ -230,32 +231,33 @@ export default function LandingPage() {
             </Button>
           </Card>
 
-          {/* Pro */}
+          {/* Pro Kit */}
           <Card className="bg-white/5 backdrop-blur-sm border-cinema-gold p-8 flex flex-col relative">
             <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-cinema-gold text-cinema-dark">
               Popular
             </Badge>
             <div className="flex items-center gap-2 mb-4">
               <Sparkles className="w-5 h-5 text-cinema-gold" />
-              <h4 className="font-semibold text-lg text-white">Pro</h4>
+              <h4 className="font-semibold text-lg text-white">Pro Kit</h4>
             </div>
-            <p className="text-sm text-gray-300 mb-4">For marketing teams shipping regular campaigns.</p>
+            <p className="text-sm text-gray-300 mb-4">Perfect for mid-size agencies and production companies.</p>
             <div className="mb-6">
-              <span className="text-3xl font-bold text-white">$7,999</span>
+              <span className="text-3xl font-bold text-white">SAR 35,000</span>
               <span className="text-gray-400"> / mo</span>
+              <div className="text-sm text-cinema-gold">25 credits</div>
             </div>
             <ul className="space-y-3 text-sm flex-1 mb-6">
               <li className="flex gap-2">
                 <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
-                <span className="text-gray-300">3 ads or variants / mo</span>
+                <span className="text-gray-300">8 MoCap Basic + 2 outdoor scans</span>
               </li>
               <li className="flex gap-2">
                 <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
-                <span className="text-gray-300">Photogrammetry processing (indoor)</span>
+                <span className="text-gray-300">Advanced cleanup included</span>
               </li>
               <li className="flex gap-2">
                 <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
-                <span className="text-gray-300">Priority revisions</span>
+                <span className="text-gray-300">Priority scheduling</span>
               </li>
             </ul>
             <Button 
@@ -266,29 +268,30 @@ export default function LandingPage() {
             </Button>
           </Card>
 
-          {/* Studio */}
+          {/* Premium Kit */}
           <Card className="bg-white/5 backdrop-blur-sm border-white/10 p-8 flex flex-col">
             <div className="flex items-center gap-2 mb-4">
               <Building2 className="w-5 h-5 text-cinema-gold" />
-              <h4 className="font-semibold text-lg text-white">Studio</h4>
+              <h4 className="font-semibold text-lg text-white">Premium Kit</h4>
             </div>
-            <p className="text-sm text-gray-300 mb-4">For larger brands & agencies with high output.</p>
+            <p className="text-sm text-gray-300 mb-4">Ideal for large brands, government projects, and high-volume productions.</p>
             <div className="mb-6">
-              <span className="text-3xl font-bold text-white">$15,999</span>
+              <span className="text-3xl font-bold text-white">SAR 65,000</span>
               <span className="text-gray-400"> / mo</span>
+              <div className="text-sm text-cinema-gold">50 credits</div>
             </div>
             <ul className="space-y-3 text-sm flex-1 mb-6">
               <li className="flex gap-2">
                 <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
-                <span className="text-gray-300">8 ads / variants / mo</span>
+                <span className="text-gray-300">10 MoCap Basic + 4 outdoor scans</span>
               </li>
               <li className="flex gap-2">
                 <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
-                <span className="text-gray-300">Indoor + outdoor photogrammetry</span>
+                <span className="text-gray-300">All advanced features</span>
               </li>
               <li className="flex gap-2">
                 <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
-                <span className="text-gray-300">Fast-track delivery</span>
+                <span className="text-gray-300">Fastest delivery (3-5 days)</span>
               </li>
             </ul>
             <Button 

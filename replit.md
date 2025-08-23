@@ -2,11 +2,13 @@
 
 ## Overview
 
-This is a comprehensive virtual production client portal featuring subscription-based services, a marketplace for digital assets, and pay-as-you-go credit system. The application serves as a professional production service platform where clients can subscribe to monthly production packages ($2,999-$15,999), purchase individual assets through the marketplace, or buy credits for flexible project needs. It includes a cinematic video background, modern UI with subscription-focused messaging, marketplace browsing with asset categories (photogrammetry, environments, mocap, media packs), credit management system, admin dashboard for submissions, and seamless integration between subscription services and marketplace functionality.
+This is a comprehensive virtual production client portal featuring subscription-based services, a marketplace for digital assets, and pay-as-you-go credit system. The application serves as a professional production service platform where clients can subscribe to monthly production packages (SAR 15,000-65,000), purchase individual assets through the marketplace, or buy pay-as-you-go kits for flexible project needs. It includes a cinematic video background, modern UI with subscription-focused messaging, marketplace browsing with asset categories (photogrammetry, environments, mocap, media packs), credit management system, admin dashboard for submissions, and seamless integration between subscription services and marketplace functionality.
 
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
+Pricing model: Authentic SAR pricing based on company's Notion documentation.
+Business model: Three revenue streams - subscription credits, pay-as-you-go kits, and marketplace sales.
 
 ## System Architecture
 
@@ -33,6 +35,8 @@ Preferred communication style: Simple, everyday language.
 - Single submissions table storing project details, package selection, file metadata, and status tracking
 - Schema includes fields for project name, brand, goals, package type, timeline, notes, files, and submission date
 - Status field supports workflow states: received, in-production, delivered
+- User credits table for tracking subscription and pay-as-you-go credit balances
+- Asset marketplace with categories: photogrammetry, environments, mocap, media packs
 - Uses Neon Database as the PostgreSQL provider for cloud hosting
 
 **UI/UX Design**
@@ -89,3 +93,14 @@ Preferred communication style: Simple, everyday language.
 - connect-pg-simple for PostgreSQL session storage
 - Built-in file upload handling with metadata extraction
 - Date-fns for date formatting and manipulation
+
+## Recent Changes
+
+**January 2025: Authentic Pricing Integration**
+- Integrated authentic SAR pricing from company's Notion page
+- Updated subscription plans: Starter (SAR 15,000/10 credits), Pro (SAR 35,000/25 credits), Premium (SAR 65,000/50 credits)
+- Replaced pay-as-you-go credit packages with individual production kits
+- Added 7 production kits: MotionCapture+ Basic/Pro, PhotoScan360 Indoor/Outdoor/Hybrid, VideoBoostAI Standard/Pro
+- Updated landing page and credits page with authentic pricing and service descriptions
+- Credit system based on SAR 1,500 per credit with 20% rollover functionality
+- Enhanced marketplace with backend API integration for real asset data

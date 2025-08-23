@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CreditCard, Coins, Zap, Clock, Star, Check, ArrowRight, Package2, TrendingUp } from "lucide-react";
-import { creditPackages, type CreditPackage } from "@shared/schema";
+import { payAsYouGoKits, type PayAsYouGoKit } from "@shared/schema";
 
 // Mock user credit data
 const mockUserCredits = {
@@ -27,7 +27,7 @@ const mockCreditHistory = [
 ];
 
 export default function CreditsPage() {
-  const [selectedPackage, setSelectedPackage] = useState<CreditPackage>("pro");
+  const [selectedKit, setSelectedKit] = useState<PayAsYouGoKit>("mocapBasic");
 
   // Fetch user credits from API (using demo email for now)
   const { data: userCredits = mockUserCredits, isLoading: creditsLoading } = useQuery({
@@ -127,55 +127,54 @@ export default function CreditsPage() {
         </div>
       </section>
 
-      {/* Credit Packages */}
+      {/* Pay-As-You-Go Kits */}
       <section className="container mx-auto px-4 py-16">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-white mb-4">Choose Your Credit Package</h2>
+          <h2 className="text-3xl font-bold text-white mb-4">Pay-As-You-Go Kits</h2>
           <p className="text-gray-300 max-w-2xl mx-auto">
-            Purchase credits to use for individual services, asset downloads, and project-specific needs. 
-            Credits never expire and can be used across all services.
+            Individual production kits for one-off projects. Pay per kit with fixed pricing. 
+            No subscription required - perfect for testing our workflow.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {Object.entries(creditPackages).map(([key, pkg]) => {
-            const isSelected = key === selectedPackage;
-            const pricePerCredit = pkg.price / pkg.credits;
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+          {Object.entries(payAsYouGoKits).map(([key, kit]) => {
+            const isSelected = key === selectedKit;
             
             return (
               <Card 
                 key={key} 
-                className={`bg-white/5 backdrop-blur-sm border-white/10 p-8 flex flex-col cursor-pointer transition-all duration-300 ${
+                className={`bg-white/5 backdrop-blur-sm border-white/10 p-6 flex flex-col cursor-pointer transition-all duration-300 ${
                   isSelected ? 'border-cinema-gold ring-2 ring-cinema-gold/50' : 'hover:border-white/20'
                 }`}
-                onClick={() => setSelectedPackage(key as CreditPackage)}
-                data-testid={`card-package-${key}`}
+                onClick={() => setSelectedKit(key as PayAsYouGoKit)}
+                data-testid={`card-kit-${key}`}
               >
                 <div className="flex items-center gap-2 mb-4">
-                  <Coins className="w-5 h-5 text-cinema-gold" />
-                  <h3 className="font-semibold text-lg text-white">{pkg.name}</h3>
-                  {key === "pro" && (
+                  <Package2 className="w-5 h-5 text-cinema-gold" />
+                  <h3 className="font-semibold text-lg text-white">{kit.name}</h3>
+                  {key === "mocapBasic" && (
                     <Badge className="bg-cinema-gold text-cinema-dark ml-auto" data-testid="badge-popular">
-                      Most Popular
+                      Popular
                     </Badge>
                   )}
                 </div>
                 
-                <p className="text-sm text-gray-300 mb-6">{pkg.description}</p>
+                <p className="text-sm text-gray-300 mb-4">{kit.description}</p>
                 
-                <div className="mb-6">
-                  <div className="text-4xl font-bold text-white mb-1" data-testid={`text-price-${key}`}>
-                    ${pkg.price}
+                <div className="mb-4">
+                  <div className="text-2xl font-bold text-white mb-1" data-testid={`text-price-${key}`}>
+                    {kit.price}
                   </div>
-                  <div className="text-sm text-gray-400">
-                    {pkg.credits} credits • ${pricePerCredit.toFixed(2)}/credit
+                  <div className="text-sm text-cinema-gold">
+                    {kit.credits} credits equivalent
                   </div>
                 </div>
                 
-                <ul className="space-y-3 text-sm flex-1 mb-6">
-                  {pkg.features.map((feature, index) => (
+                <ul className="space-y-2 text-sm flex-1 mb-6">
+                  {kit.features.map((feature, index) => (
                     <li key={index} className="flex items-start gap-2">
-                      <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                      <Check className="w-3 h-3 text-emerald-400 flex-shrink-0 mt-1" />
                       <span className="text-gray-300">{feature}</span>
                     </li>
                   ))}
@@ -184,8 +183,9 @@ export default function CreditsPage() {
                 <Button 
                   className={isSelected ? "gold-gradient text-cinema-dark font-semibold" : "bg-cinema-slate hover:bg-gray-600 text-white"}
                   data-testid={`button-select-${key}`}
+                  size="sm"
                 >
-                  {isSelected ? "Selected" : "Select Package"}
+                  {isSelected ? "Selected" : "Select Kit"}
                 </Button>
               </Card>
             );
@@ -196,52 +196,52 @@ export default function CreditsPage() {
           <Button 
             size="lg"
             className="gold-gradient text-cinema-dark font-semibold px-8"
-            disabled={!selectedPackage}
-            data-testid="button-purchase-credits"
+            disabled={!selectedKit}
+            data-testid="button-purchase-kit"
           >
             <CreditCard className="w-5 h-5 mr-2" />
-            Purchase {creditPackages[selectedPackage]?.name}
+            Purchase {selectedKit ? payAsYouGoKits[selectedKit]?.name : "Kit"}
             <ArrowRight className="w-5 h-5 ml-2" />
           </Button>
         </div>
       </section>
 
-      {/* How Credits Work */}
+      {/* How Pay-As-You-Go Works */}
       <section className="bg-cinema-gray py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-white text-center mb-12">How Credits Work</h2>
+          <h2 className="text-3xl font-bold text-white text-center mb-12">How Pay-As-You-Go Works</h2>
           
           <div className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">
             <Card className="bg-white/5 backdrop-blur-sm border-white/10 p-6 text-center">
               <div className="w-12 h-12 bg-cinema-gold/20 rounded-xl flex items-center justify-center mx-auto mb-4">
-                <CreditCard className="w-6 h-6 text-cinema-gold" />
-              </div>
-              <h3 className="font-semibold text-white mb-2">1. Buy Credits</h3>
-              <p className="text-gray-300 text-sm">Purchase credit packages that fit your project needs and budget.</p>
-            </Card>
-            
-            <Card className="bg-white/5 backdrop-blur-sm border-white/10 p-6 text-center">
-              <div className="w-12 h-12 bg-cinema-gold/20 rounded-xl flex items-center justify-center mx-auto mb-4">
                 <Package2 className="w-6 h-6 text-cinema-gold" />
               </div>
-              <h3 className="font-semibold text-white mb-2">2. Use for Services</h3>
-              <p className="text-gray-300 text-sm">Spend credits on asset downloads, processing services, or custom projects.</p>
+              <h3 className="font-semibold text-white mb-2">1. Choose Kit</h3>
+              <p className="text-gray-300 text-sm">Select the production kit that matches your project needs.</p>
             </Card>
             
             <Card className="bg-white/5 backdrop-blur-sm border-white/10 p-6 text-center">
               <div className="w-12 h-12 bg-cinema-gold/20 rounded-xl flex items-center justify-center mx-auto mb-4">
-                <Clock className="w-6 h-6 text-cinema-gold" />
+                <CreditCard className="w-6 h-6 text-cinema-gold" />
               </div>
-              <h3 className="font-semibold text-white mb-2">3. No Expiry</h3>
-              <p className="text-gray-300 text-sm">Credits never expire. Use them whenever you need virtual production services.</p>
+              <h3 className="font-semibold text-white mb-2">2. Pay Fixed Price</h3>
+              <p className="text-gray-300 text-sm">Pay the kit price upfront - no subscription, no hidden costs.</p>
             </Card>
             
             <Card className="bg-white/5 backdrop-blur-sm border-white/10 p-6 text-center">
               <div className="w-12 h-12 bg-cinema-gold/20 rounded-xl flex items-center justify-center mx-auto mb-4">
                 <Zap className="w-6 h-6 text-cinema-gold" />
               </div>
-              <h3 className="font-semibold text-white mb-2">4. Instant Access</h3>
-              <p className="text-gray-300 text-sm">Credits are applied instantly. Start using services immediately after purchase.</p>
+              <h3 className="font-semibold text-white mb-2">3. We Produce</h3>
+              <p className="text-gray-300 text-sm">Our AI-powered team handles capture, cleanup, and processing.</p>
+            </Card>
+            
+            <Card className="bg-white/5 backdrop-blur-sm border-white/10 p-6 text-center">
+              <div className="w-12 h-12 bg-cinema-gold/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <Clock className="w-6 h-6 text-cinema-gold" />
+              </div>
+              <h3 className="font-semibold text-white mb-2">4. Fast Delivery</h3>
+              <p className="text-gray-300 text-sm">Receive production-ready assets in 3-12 days depending on kit.</p>
             </Card>
           </div>
         </div>
