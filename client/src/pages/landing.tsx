@@ -23,9 +23,7 @@ function LandingPage() {
         onError={(e) => console.log('Video error:', e)}
         onLoadedData={() => console.log('Video loaded successfully')}
       >
-        <source src="/attached_assets/VirtuaLWallNoText_1755988098901.mp4" type="video/mp4" />
-        {/* Fallback to previous video if new one doesn't load */}
-        <source src="/attached_assets/sunrise, cinematic, slow zoom, desert landscape_1754832500582.mp4" type="video/mp4" />
+        <source src="/attached_assets/VMP.mp4" type="video/mp4" />
       </video>
       <div className="absolute inset-0 bg-gradient-to-r from-cinema-dark/90 via-cinema-dark/70 to-transparent" />
       
