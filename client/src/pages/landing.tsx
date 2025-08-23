@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Video, Bot, Globe, Play, CreditCard, Store, Check, Rocket, Sparkles, Building2, Cpu, ShoppingBag, Film, Library, Trophy, Mail, MessageCircle } from "lucide-react";
 import vmpLogo from "@assets/FinalLogoTagline_1755987886820.png";
 
-export default function LandingPage() {
+function LandingPage() {
   const [, setLocation] = useLocation();
 
   return (
@@ -465,3 +465,5 @@ export default function LandingPage() {
     </div>
   );
 }
+
+export default LandingPage;
