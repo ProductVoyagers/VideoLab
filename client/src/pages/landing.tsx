@@ -85,90 +85,114 @@ export default function LandingPage() {
       {/* Offering Section */}
       <section className="relative z-10 mx-auto max-w-7xl px-6 py-16 bg-cinema-gray">
         <div className="grid md:grid-cols-3 gap-6">
-          <Card className="bg-white/5 backdrop-blur-sm border-white/10 p-6">
-            <div className="w-10 h-10 rounded-xl bg-cinema-gold/90 grid place-items-center text-cinema-dark mb-4">
-              <CreditCard className="w-5 h-5" />
+          {/* Subscriptions */}
+          <Card className="bg-white/5 backdrop-blur-sm border-white/10 p-6 flex flex-col justify-between">
+            <div>
+              <div className="w-10 h-10 rounded-xl bg-cinema-gold/90 grid place-items-center text-cinema-dark mb-4">
+                <CreditCard className="w-5 h-5" />
+              </div>
+              <h3 className="text-xl font-semibold text-white mb-2">Subscriptions</h3>
+              <p className="text-gray-300 mb-4">
+                Predictable monthly access to production capacity and deliverables. We scope, schedule, and deliver on cadence.
+              </p>
+              <ul className="space-y-2 text-sm">
+                <li className="flex gap-2">
+                  <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-300">AI-enhanced ad creation</span>
+                </li>
+                <li className="flex gap-2">
+                  <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-300">Motion capture cleanup</span>
+                </li>
+                <li className="flex gap-2">
+                  <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-300">Photogrammetry processing</span>
+                </li>
+              </ul>
             </div>
-            <h3 className="text-xl font-semibold text-white mb-2">Subscriptions</h3>
-            <p className="text-gray-300 mb-4">Predictable monthly access to production capacity and deliverables. We scope, schedule, and deliver on cadence.</p>
-            <ul className="space-y-2 text-sm">
-              <li className="flex gap-2">
-                <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
-                <span className="text-gray-300">AI-enhanced ad creation</span>
-              </li>
-              <li className="flex gap-2">
-                <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
-                <span className="text-gray-300">Motion capture cleanup</span>
-              </li>
-              <li className="flex gap-2">
-                <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
-                <span className="text-gray-300">Photogrammetry processing</span>
-              </li>
-            </ul>
+            <div className="mt-6">
+              <Button
+                onClick={() => setLocation("/subscription")}
+                size="sm"
+                className="w-full gold-gradient text-cinema-dark font-semibold"
+              >
+                View Plans
+              </Button>
+            </div>
           </Card>
 
-          <Card className="bg-white/5 backdrop-blur-sm border-white/10 p-6">
-            <div className="w-10 h-10 rounded-xl bg-cinema-gold/90 grid place-items-center text-cinema-dark mb-4">
-              <Cpu className="w-5 h-5" />
+          {/* Pay-as-you-go Kits */}
+          <Card className="bg-white/5 backdrop-blur-sm border-white/10 p-6 flex flex-col justify-between">
+            <div>
+              <div className="w-10 h-10 rounded-xl bg-cinema-gold/90 grid place-items-center text-cinema-dark mb-4">
+                <Cpu className="w-5 h-5" />
+              </div>
+              <h3 className="text-xl font-semibold text-white mb-2">Pay-as-you-go Kits</h3>
+              <p className="text-gray-300 mb-4">
+                Individual production kits for one-off projects. Fixed pricing, no subscription required.
+              </p>
+              <ul className="space-y-2 text-sm">
+                <li className="flex gap-2">
+                  <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-300">Outdoor scans</span>
+                </li>
+                <li className="flex gap-2">
+                  <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-300">Pro video variants</span>
+                </li>
+                <li className="flex gap-2">
+                  <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-300">Priority delivery</span>
+                </li>
+              </ul>
             </div>
-            <h3 className="text-xl font-semibold text-white mb-2">Pay-as-you-go Kits</h3>
-            <p className="text-gray-300 mb-4">Individual production kits for one-off projects. Fixed pricing, no subscription required.</p>
-            <div className="flex justify-center mt-4">
-              <Button 
+            <div className="mt-6">
+              <Button
                 onClick={() => setLocation("/pay-as-you-go")}
-                variant="outline" 
-                size="sm" 
-                className="border-white/20 text-white hover:bg-white/10 w-full max-w-[140px]"
+                variant="outline"
+                size="sm"
+                className="w-full border-white/20 text-white hover:bg-white/10"
               >
                 Browse Kits
               </Button>
             </div>
-            <ul className="space-y-2 text-sm">
-              <li className="flex gap-2">
-                <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
-                <span className="text-gray-300">Outdoor scans</span>
-              </li>
-              <li className="flex gap-2">
-                <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
-                <span className="text-gray-300">Pro video variants</span>
-              </li>
-              <li className="flex gap-2">
-                <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
-                <span className="text-gray-300">Priority delivery</span>
-              </li>
-            </ul>
           </Card>
 
-          <Card className="bg-white/5 backdrop-blur-sm border-white/10 p-6">
-            <div className="w-10 h-10 rounded-xl bg-cinema-gold/90 grid place-items-center text-cinema-dark mb-4">
-              <Store className="w-5 h-5" />
+          {/* Marketplace */}
+          <Card className="bg-white/5 backdrop-blur-sm border-white/10 p-6 flex flex-col justify-between">
+            <div>
+              <div className="w-10 h-10 rounded-xl bg-cinema-gold/90 grid place-items-center text-cinema-dark mb-4">
+                <Store className="w-5 h-5" />
+              </div>
+              <h3 className="text-xl font-semibold text-white mb-2">Marketplace</h3>
+              <p className="text-gray-300 mb-4">
+                Curated photogrammetry assets, VP-ready environments, and AI media packs. Start with first-party, open to creators later.
+              </p>
+              <ul className="space-y-2 text-sm">
+                <li className="flex gap-2">
+                  <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-300">Smart tagging & search</span>
+                </li>
+                <li className="flex gap-2">
+                  <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-300">License clarity</span>
+                </li>
+                <li className="flex gap-2">
+                  <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-300">Instant previews</span>
+                </li>
+              </ul>
             </div>
-            <h3 className="text-xl font-semibold text-white mb-2">Marketplace</h3>
-            <p className="text-gray-300 mb-4">Curated photogrammetry assets, VP-ready environments, and AI media packs. Start with first-party, open to creators later.</p>
-            <div className="flex justify-center mt-4">
-              <Button 
+            <div className="mt-6">
+              <Button
                 onClick={() => setLocation("/marketplace")}
-                variant="outline" 
-                size="sm" 
-                className="border-white/20 text-white hover:bg-white/10 w-full max-w-[140px]"
+                variant="outline"
+                size="sm"
+                className="w-full border-white/20 text-white hover:bg-white/10"
               >
                 Browse Assets
               </Button>
             </div>
-            <ul className="space-y-2 text-sm">
-              <li className="flex gap-2">
-                <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
-                <span className="text-gray-300">Smart tagging & search</span>
-              </li>
-              <li className="flex gap-2">
-                <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
-                <span className="text-gray-300">License clarity</span>
-              </li>
-              <li className="flex gap-2">
-                <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
-                <span className="text-gray-300">Instant previews</span>
-              </li>
-            </ul>
           </Card>
         </div>
       </section>
