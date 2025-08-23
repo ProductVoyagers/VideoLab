@@ -1,5 +1,6 @@
 import { Link, useLocation } from "wouter";
 import { Video, Settings, Home, Store, CreditCard, Package2 } from "lucide-react";
+import vmpLogo from "@assets/FinalLogoTagline_1755987886820.png";
 
 export default function Navigation() {
   const [location] = useLocation();
@@ -8,11 +9,12 @@ export default function Navigation() {
     <nav className="bg-cinema-gray/80 backdrop-blur-sm border-b border-gray-800 sticky top-0 z-50">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <Link href="/">
-          <div className="flex items-center space-x-2 cursor-pointer">
-            <Video className="text-cinema-gold text-2xl" />
-            <span className="text-xl font-bold bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
-              Virtual Media Production
-            </span>
+          <div className="flex items-center cursor-pointer">
+            <img 
+              src={vmpLogo} 
+              alt="VMP - Virtual Media Production" 
+              className="h-10 w-auto"
+            />
           </div>
         </Link>
         

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Video, Bot, Globe, Play, CreditCard, Store, Check, Rocket, Sparkles, Building2, Cpu, ShoppingBag, Film, Library, Trophy, Mail, MessageCircle } from "lucide-react";
+import vmpLogo from "@assets/FinalLogoTagline_1755987886820.png";
 
 export default function LandingPage() {
   const [, setLocation] = useLocation();
@@ -108,14 +109,16 @@ export default function LandingPage() {
             </div>
             <h3 className="text-xl font-semibold text-white mb-2">Pay-as-you-go Kits</h3>
             <p className="text-gray-300 mb-4">Individual production kits for one-off projects. Fixed pricing, no subscription required.</p>
-            <Button 
-              onClick={() => setLocation("/pay-as-you-go")}
-              variant="outline" 
-              size="sm" 
-              className="border-white/20 text-white hover:bg-white/10 mt-4 w-full"
-            >
-              Browse Kits
-            </Button>
+            <div className="flex justify-center mt-4">
+              <Button 
+                onClick={() => setLocation("/pay-as-you-go")}
+                variant="outline" 
+                size="sm" 
+                className="border-white/20 text-white hover:bg-white/10 w-full max-w-[140px]"
+              >
+                Browse Kits
+              </Button>
+            </div>
             <ul className="space-y-2 text-sm">
               <li className="flex gap-2">
                 <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
@@ -138,14 +141,16 @@ export default function LandingPage() {
             </div>
             <h3 className="text-xl font-semibold text-white mb-2">Marketplace</h3>
             <p className="text-gray-300 mb-4">Curated photogrammetry assets, VP-ready environments, and AI media packs. Start with first-party, open to creators later.</p>
-            <Button 
-              onClick={() => setLocation("/marketplace")}
-              variant="outline" 
-              size="sm" 
-              className="border-white/20 text-white hover:bg-white/10 mt-4 w-full"
-            >
-              Browse Assets
-            </Button>
+            <div className="flex justify-center mt-4">
+              <Button 
+                onClick={() => setLocation("/marketplace")}
+                variant="outline" 
+                size="sm" 
+                className="border-white/20 text-white hover:bg-white/10 w-full max-w-[140px]"
+              >
+                Browse Assets
+              </Button>
+            </div>
             <ul className="space-y-2 text-sm">
               <li className="flex gap-2">
                 <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
@@ -382,13 +387,14 @@ export default function LandingPage() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center space-x-2 mb-4">
-                <Video className="text-cinema-gold" />
-                <span className="text-lg font-bold bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
-                  VirtualPro Studios
-                </span>
+                <img 
+                  src={vmpLogo} 
+                  alt="VMP - Virtual Media Production" 
+                  className="h-16 w-auto"
+                />
               </div>
               <p className="text-gray-400 text-sm">
-                Creating immersive virtual production experiences with cutting-edge technology.
+                Capture Reality. Create Worlds.
               </p>
             </div>
             
