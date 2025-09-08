@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Video, Bot, Globe, Play, CreditCard, Store, Check, Rocket, Sparkles, Building2, Cpu, ShoppingBag, Film, Library, Trophy, Mail, MessageCircle } from "lucide-react";
-import vmpLogo from "@assets/new_vmp_logo.png";
+import vmpLogo from "/attached_assets/latest_vmp_logo.png";
 
 function LandingPage() {
   const [, setLocation] = useLocation();
@@ -26,7 +26,7 @@ function LandingPage() {
         <source src="/attached_assets/VMP.mp4" type="video/mp4" />
       </video>
       <div className="absolute inset-0 bg-gradient-to-r from-cinema-dark/90 via-cinema-dark/70 to-transparent" />
-      
+
       {/* Hero Content */}
       <div className="relative z-10 container mx-auto px-4 py-20 min-h-screen flex items-center">
         <div className="max-w-4xl">
@@ -34,7 +34,7 @@ function LandingPage() {
             <Bot className="w-3.5 h-3.5 text-cinema-gold" />
             AI-driven production • We do the work
           </div>
-          
+
           <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
             <span className="text-white">Virtual Media Production</span><br />
             <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
@@ -49,7 +49,7 @@ function LandingPage() {
           <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl leading-relaxed">
             We produce your ads and media using AI-enhanced motion capture, photogrammetry, and video generation. You subscribe. You send inputs. <span className="font-semibold text-cinema-gold">We deliver.</span>
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 justify-start mb-6">
             <Button 
               onClick={() => setLocation("/subscription")}
@@ -69,7 +69,7 @@ function LandingPage() {
               Explore Marketplace
             </Button>
           </div>
-          
+
           <ul className="grid gap-2 text-sm text-gray-300">
             <li className="flex items-center gap-2">
               <Check className="w-4 h-4 text-emerald-400" />
@@ -413,7 +413,7 @@ function LandingPage() {
           </div>
         </Card>
       </section>
-      
+
       {/* Footer */}
       <footer className="bg-cinema-gray border-t border-gray-800 py-12 relative z-10">
         <div className="container mx-auto px-4">
@@ -430,7 +430,7 @@ function LandingPage() {
                 Capture Reality. Create Worlds.
               </p>
             </div>
-            
+
             <div>
               <h4 className="text-white font-semibold mb-4">Services</h4>
               <ul className="space-y-2 text-gray-400 text-sm">
@@ -440,7 +440,7 @@ function LandingPage() {
                 <li>Post Production</li>
               </ul>
             </div>
-            
+
             <div>
               <h4 className="text-white font-semibold mb-4">Company</h4>
               <ul className="space-y-2 text-gray-400 text-sm">
@@ -450,7 +450,7 @@ function LandingPage() {
                 <li>Contact</li>
               </ul>
             </div>
-            
+
             <div>
               <h4 className="text-white font-semibold mb-4">Connect</h4>
               <div className="flex space-x-4 text-gray-400">
@@ -461,7 +461,7 @@ function LandingPage() {
               </div>
             </div>
           </div>
-          
+
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm">
             <p>&copy; 2024 VirtualPro Studios. All rights reserved.</p>
           </div>

@@ -1,6 +1,6 @@
 import { Link, useLocation } from "wouter";
 import { Video, Settings, Home, Store, CreditCard, Package2 } from "lucide-react";
-import vmpLogo from "@assets/new_vmp_logo.png";
+import vmpLogo from "/attached_assets/latest_vmp_logo.png";
 
 export default function Navigation() {
   const [location] = useLocation();
@@ -17,7 +17,7 @@ export default function Navigation() {
             />
           </div>
         </Link>
-        
+
         <div className="hidden md:flex items-center space-x-6">
           <Link href="/" className={`transition-colors ${location === '/' ? 'text-cinema-gold' : 'text-gray-300 hover:text-cinema-gold'}`}>
             Home
@@ -41,7 +41,7 @@ export default function Navigation() {
             </button>
           </Link>
         </div>
-        
+
         <button className="md:hidden text-white">
           <div className="w-6 h-1 bg-white mb-1"></div>
           <div className="w-6 h-1 bg-white mb-1"></div>
