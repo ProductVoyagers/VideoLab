@@ -41,7 +41,11 @@ function LandingPage() {
               Made Simple
             </span>
           </h1>
-          
+          {/* Tagline */}
+          <p className="text-lg md:text-xl text-gray-300 mb-8 italic tracking-wide">
+            Capture Reality. <span className="text-cinema-gold">Create Worlds.</span>
+          </p>
+
           <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl leading-relaxed">
             We produce your ads and media using AI-enhanced motion capture, photogrammetry, and video generation. You subscribe. You send inputs. <span className="font-semibold text-cinema-gold">We deliver.</span>
           </p>

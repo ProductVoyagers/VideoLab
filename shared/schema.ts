@@ -120,7 +120,8 @@ export const payAsYouGoKits = {
   mocapBasic: {
     name: "MotionCapture+ Basic Kit",
     price: "SAR 3,000", // 2 credits × SAR 1,500
-    description: "1hr AI mocap with basic cleanup",
+    description: " 1hr AI mocap with auto-cleanup (noise + foot fixes). Perfect for prototypes or quick tests.",
+    
     features: [
       "1 hour AI motion capture session",
       "Basic cleanup and processing",
@@ -132,12 +133,12 @@ export const payAsYouGoKits = {
   mocapPro: {
     name: "MotionCapture+ Pro Kit", 
     price: "SAR 6,000", // 4 credits × SAR 1,500
-    description: "2hr AI mocap with advanced cleanup",
+    description: "2hr AI mocap with full cleanup + retargeting. Ideal for film, games, and production use.",
     features: [
       "2 hour AI motion capture session",
       "Advanced cleanup and processing",
       "Multiple output formats",
-      "3-5 business day delivery"
+      "5-10 business day delivery"
     ],
     credits: 4
   },
@@ -177,27 +178,16 @@ export const payAsYouGoKits = {
     ],
     credits: 6
   },
-  videoBoostStandard: {
-    name: "VideoBoostAI Standard",
-    price: "SAR 1,500", // 1 credit × SAR 1,500
-    description: "AI 4K upscale and stabilization",
-    features: [
-      "AI 4K upscaling",
-      "Video stabilization",
-      "Up to 2 minutes footage",
-      "3-5 day delivery"
-    ],
-    credits: 1
-  },
+ 
   videoBoostPro: {
-    name: "VideoBoostAI Pro",
+    name: "AI Video Ad",
     price: "SAR 4,500", // 3 credits × SAR 1,500
-    description: "8K upscale with color grading",
+    description: "A 30–60s AI-generated ad customized for your brand, ready to share on social media or campaigns.",
     features: [
-      "AI 8K upscaling",
-      "Color grading included",
-      "Style transfer options",
-      "3-5 day delivery"
+      "30–60 second AI-generated video ad",
+      "Custom script, visuals, and branding",
+      "Delivery in 4K resolution (8K upgrade optional)",
+      "5 - 10 day delivery"
     ],
     credits: 3
   }
