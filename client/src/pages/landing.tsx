@@ -21,7 +21,7 @@ import {
   Mail,
   MessageCircle,
 } from "lucide-react";
-import vmpLogo from "/attached_assets/VMPOrangeLogo.png";
+import vmpLogo from "@assets/VMPOrangeLogo.png";
 
 function LandingPage() {
   const [, setLocation] = useLocation();
