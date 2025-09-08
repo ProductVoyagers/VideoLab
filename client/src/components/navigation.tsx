@@ -1,6 +1,6 @@
 import { Link, useLocation } from "wouter";
 import { Video, Settings, Home, Store, CreditCard, Package2 } from "lucide-react";
-import vmpLogo from "@assets/FinalLogoTagline_1755987886820.png";
+import vmpLogo from "/attached_assets/new_vmp_logo.png";
 
 export default function Navigation() {
   const [location] = useLocation();
