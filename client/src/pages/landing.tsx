@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Video, Bot, Globe, Play, CreditCard, Store, Check, Rocket, Sparkles, Building2, Cpu, ShoppingBag, Film, Library, Trophy, Mail, MessageCircle } from "lucide-react";
-import vmpLogo from "/attached_assets/new_vmp_logo.png";
+import vmpLogo from "@assets/new_vmp_logo.png";
 
 function LandingPage() {
   const [, setLocation] = useLocation();
