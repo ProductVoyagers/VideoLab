@@ -22,6 +22,7 @@ import {
   MessageCircle,
 } from "lucide-react";
 import vmpLogo from "@assets/VMPOrangeLogo.png";
+import VideoPlayer from "@/components/VideoPlayer";
 
 function LandingPage() {
   const [, setLocation] = useLocation();
@@ -41,7 +42,7 @@ function LandingPage() {
         onError={(e) => console.log("Video error:", e)}
         onLoadedData={() => console.log("Video loaded successfully")}
       >
-        <source src="/attached_assets/VMP.mp4" type="video/mp4" />
+        <source src="/attached_assets/Reel_1757443113614.mp4" type="video/mp4" />
       </video>
       <div className="absolute inset-0 bg-gradient-to-r from-cinema-dark/90 via-cinema-dark/70 to-transparent" />
 
@@ -268,6 +269,28 @@ function LandingPage() {
               Cinematic ads and assets on time, every month.
             </p>
           </Card>
+        </div>
+      </section>
+
+      {/* Video Showcase Section */}
+      <section className="relative z-10 mx-auto max-w-7xl px-6 py-16 bg-cinema-gray">
+        <div className="text-center mb-12">
+          <h3 className="text-3xl font-bold text-white mb-4">See Our Work</h3>
+          <p className="text-gray-300">
+            Watch examples of our virtual production capabilities
+          </p>
+        </div>
+        
+        <div className="max-w-4xl mx-auto">
+          <VideoPlayer
+            src="/attached_assets/Reel_1757443113614.mp4"
+            title="Virtual Production Reel"
+            className="w-full h-96 shadow-2xl"
+            showControls={true}
+            autoPlay={false}
+            loop={true}
+            muted={true}
+          />
         </div>
       </section>
 
