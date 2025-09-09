@@ -28,33 +28,9 @@ function LandingPage() {
   const [, setLocation] = useLocation();
 
   return (
-    <div className="min-h-screen relative">
-      {/* Hero Video Background */}
-      <video
-        className="absolute inset-0 w-full h-full object-cover z-0"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        onLoadStart={() => console.log("Video loading started")}
-        onCanPlay={(e) => {
-          console.log("Video can play");
-          // Attempt to play the video
-          const video = e.target as HTMLVideoElement;
-          video.play().catch((error) => {
-            console.log("Autoplay prevented:", error);
-          });
-        }}
-        onError={(e) => console.log("Video error:", e)}
-        onLoadedData={() => console.log("Video loaded successfully")}
-      >
-        <source src="/Reel_1757443113614.mp4" type="video/mp4" />
-      </video>
-      <div className="absolute inset-0 bg-gradient-to-r from-cinema-dark/90 via-cinema-dark/70 to-transparent" />
-
+    <div className="min-h-screen relative bg-gradient-to-br from-cinema-dark via-gray-900 to-black">
       {/* Hero Content */}
-      <div className="relative z-10 container mx-auto px-4 py-20 min-h-screen flex items-center">
+      <div className="container mx-auto px-4 py-20 min-h-screen flex items-center">
         <div className="max-w-4xl">
           <div className="inline-flex items-center gap-2 rounded-full px-3 py-1 bg-white/10 backdrop-blur-sm border border-white/20 text-xs mb-4">
             <Bot className="w-3.5 h-3.5 text-cinema-gold" />
