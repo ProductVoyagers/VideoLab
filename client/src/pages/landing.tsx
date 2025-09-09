@@ -42,7 +42,7 @@ function LandingPage() {
         onError={(e) => console.log("Video error:", e)}
         onLoadedData={() => console.log("Video loaded successfully")}
       >
-        <source src="/attached_assets/Reel_1757443113614.mp4" type="video/mp4" />
+        <source src="/Reel_1757443113614.mp4" type="video/mp4" />
       </video>
       <div className="absolute inset-0 bg-gradient-to-r from-cinema-dark/90 via-cinema-dark/70 to-transparent" />
 
@@ -283,7 +283,7 @@ function LandingPage() {
         
         <div className="max-w-4xl mx-auto">
           <VideoPlayer
-            src="/attached_assets/Reel_1757443113614.mp4"
+            src="/Reel_1757443113614.mp4"
             title="Virtual Production Reel"
             className="w-full h-96 shadow-2xl"
             showControls={true}
