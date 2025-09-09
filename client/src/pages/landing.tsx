@@ -36,9 +36,16 @@ function LandingPage() {
         muted
         loop
         playsInline
-        preload="auto"
+        preload="metadata"
         onLoadStart={() => console.log("Video loading started")}
-        onCanPlay={() => console.log("Video can play")}
+        onCanPlay={(e) => {
+          console.log("Video can play");
+          // Attempt to play the video
+          const video = e.target as HTMLVideoElement;
+          video.play().catch((error) => {
+            console.log("Autoplay prevented:", error);
+          });
+        }}
         onError={(e) => console.log("Video error:", e)}
         onLoadedData={() => console.log("Video loaded successfully")}
       >
