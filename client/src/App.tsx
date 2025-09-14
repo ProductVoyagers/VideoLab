@@ -14,6 +14,10 @@ import PayAsYouGoPage from "@/pages/pay-as-you-go";
 import SubscriptionUploadPage from "@/pages/subscription-upload";
 import PayGUploadPage from "@/pages/payg-upload";
 import NotFound from "@/pages/not-found";
+import LoginPage from "@/pages/login";
+import RegisterPage from "@/pages/register";
+import ProfilePage from "@/pages/profile";
+import UploadProductPage from "@/pages/upload-product";
 
 function Router() {
   return (
@@ -29,6 +33,10 @@ function Router() {
         <Route path="/pay-as-you-go" component={PayAsYouGoPage} />
         <Route path="/pay-as-you-go/upload" component={PayGUploadPage} />
         <Route path="/admin" component={AdminDashboard} />
+        <Route path="/login" component={LoginPage} />
+        <Route path="/register" component={RegisterPage} />
+        <Route path="/profile" component={ProfilePage} />
+        <Route path="/upload-product" component={UploadProductPage} />
         <Route component={NotFound} />
       </Switch>
     </div>

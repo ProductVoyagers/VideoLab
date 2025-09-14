@@ -1,9 +1,28 @@
 import { Link, useLocation } from "wouter";
-import { Video, Settings, Home, Store, CreditCard, Package2 } from "lucide-react";
+import {
+  Video,
+  Settings,
+  Home,
+  Store,
+  CreditCard,
+  Package2,
+  LogIn,
+  LogOut,
+  User,
+  Upload,
+} from "lucide-react";
 import vmpLogo from "@assets/VMPOrangeLogo.png";
+import { useAuth } from "@/hooks/useAuth";
+import { supabase } from "@/lib/supabaseClient";
 
 export default function Navigation() {
-  const [location] = useLocation();
+  const [location, setLocation] = useLocation();
+  const { session, user } = useAuth();
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    setLocation("/");
+  };
 
   return (
     <nav className="bg-cinema-gray/80 backdrop-blur-sm border-b border-gray-800 sticky top-0 z-50">
@@ -34,6 +53,38 @@ export default function Navigation() {
             <Store className="w-4 h-4" />
             <span>Marketplace</span>
           </Link>
+          {session ? (
+            <>
+              {user?.user_metadata.role === "seller" && (
+                <Link href="/upload-product">
+                  <button className="bg-cinema-gold text-cinema-dark px-4 py-2 rounded-lg hover:bg-yellow-500 transition-colors flex items-center space-x-2">
+                    <Upload className="w-4 h-4" />
+                    <span>Upload</span>
+                  </button>
+                </Link>
+              )}
+              <Link href="/profile">
+                <button className="bg-cinema-slate px-4 py-2 rounded-lg hover:bg-gray-600 transition-colors flex items-center space-x-2">
+                  <User className="w-4 h-4" />
+                  <span>Profile</span>
+                </button>
+              </Link>
+              <button
+                onClick={handleLogout}
+                className="bg-cinema-slate px-4 py-2 rounded-lg hover:bg-gray-600 transition-colors flex items-center space-x-2"
+              >
+                <LogOut className="w-4 h-4" />
+                <span>Logout</span>
+              </button>
+            </>
+          ) : (
+            <Link href="/login">
+              <button className="bg-cinema-slate px-4 py-2 rounded-lg hover:bg-gray-600 transition-colors flex items-center space-x-2">
+                <LogIn className="w-4 h-4" />
+                <span>Login</span>
+              </button>
+            </Link>
+          )}
           <Link href="/admin">
             <button className="bg-cinema-slate px-4 py-2 rounded-lg hover:bg-gray-600 transition-colors flex items-center space-x-2">
               <Settings className="w-4 h-4" />
