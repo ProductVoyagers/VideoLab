@@ -11,7 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
-import { payAsYouGoKits, type PayAsYouGoKit } from "@shared/schema";
+import { payAsYouGoKits, type PayAsYouGoKit } from "@shared/old_schema";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import { ArrowLeft, Upload, FileText, Calendar, CreditCard, Package2, AlertCircle } from "lucide-react";

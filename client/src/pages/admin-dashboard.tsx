@@ -11,7 +11,7 @@ import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import { Download, Home, Eye, Edit, Play, Check, Clock, Cog, Inbox, DollarSign, ChevronLeft, ChevronRight } from "lucide-react";
 import type { Submission } from "@shared/schema";
-import { packageTypes } from "@shared/schema";
+import { packageTypes } from "@shared/old_schema";
 
 export default function AdminDashboard() {
   const [statusFilter, setStatusFilter] = useState("");

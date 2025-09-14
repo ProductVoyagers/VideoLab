@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { packageTypes, type PackageType } from "@shared/schema";
+import { packageTypes, type PackageType } from "@shared/old_schema";
 import { Check, CreditCard, ArrowRight, Star, Zap, Clock, Users, Crown, Rocket, Sparkles, Building2 } from "lucide-react";
 
 export default function SubscriptionPage() {

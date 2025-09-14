@@ -30,7 +30,15 @@ export default function RegisterPage() {
   });
 
   const handleRegister = async (values: z.infer<typeof registerSchema>) => {
-    const { error } = await supabase.auth.signUp(values);
+    const { error } = await supabase.auth.signUp({
+      email: values.email,
+      password: values.password,
+      options: {
+        data: {
+          role: values.role,
+        },
+      },
+    });
     if (error) {
       toast({
         title: "Registration failed",
@@ -107,6 +115,14 @@ export default function RegisterPage() {
               </Button>
             </form>
           </Form>
+          <div className="text-center mt-4">
+            <p className="text-sm">
+              Already have an account?{" "}
+              <a href="/login" className="text-cinema-gold hover:underline">
+                Log in
+              </a>
+            </p>
+          </div>
         </CardContent>
       </Card>
     </div>

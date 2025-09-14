@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import { Check, CheckCircle } from "lucide-react";
-import { packageTypes, type PackageType } from "@shared/schema";
+import { packageTypes, type PackageType } from "@shared/old_schema";
 
 interface PackageCardProps {
   packageKey: PackageType;

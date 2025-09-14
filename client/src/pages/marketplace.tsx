@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Search, Filter, Download, Eye, Star, Box, Mountain, Activity, Package2, CreditCard, Coins } from "lucide-react";
-import { assetCategories, type AssetCategory, type MarketplaceAsset } from "@shared/schema";
+import { assetCategories, type AssetCategory, type MarketplaceAsset } from "@shared/old_schema";
 
 // Mock data for demonstration - in real app this would come from API
 const mockAssets: MarketplaceAsset[] = [

@@ -13,7 +13,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import ProgressSteps from "@/components/ui/progress-steps";
 import PackageCard from "@/components/ui/package-card";
 import FileUpload from "@/components/ui/file-upload";
-import { insertSubmissionSchema, packageTypes, type PackageType, type InsertSubmission } from "@shared/schema";
+import { insertSubmissionSchema, packageTypes, type PackageType, type InsertSubmission } from "@shared/old_schema";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import { ArrowLeft, ArrowRight, CheckCircle, Plus, Search } from "lucide-react";

@@ -8,7 +8,7 @@ export const userRole = pgEnum('user_role', ['buyer', 'seller', 'superadmin']);
 export const users = pgTable("users", {
   id: varchar("id").primaryKey(), // Comes from Supabase Auth
   email: text("email").notNull().unique(),
-  role: userRole("role").notNull().default("buyer"),
+  role: text("role").notNull().default("buyer"),
   createdAt: timestamp("created_at").notNull().default(sql`now()`),
 });
 

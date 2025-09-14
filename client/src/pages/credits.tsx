@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CreditCard, Coins, Zap, Clock, Star, Check, ArrowRight, Package2, TrendingUp } from "lucide-react";
-import { payAsYouGoKits, type PayAsYouGoKit } from "@shared/schema";
+import { payAsYouGoKits, type PayAsYouGoKit } from "@shared/old_schema";
 
 // Mock user credit data
 const mockUserCredits = {

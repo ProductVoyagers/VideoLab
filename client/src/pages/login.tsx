@@ -83,6 +83,14 @@ export default function LoginPage() {
               </Button>
             </form>
           </Form>
+          <div className="text-center mt-4">
+            <p className="text-sm">
+              Don't have an account?{" "}
+              <a href="/register" className="text-cinema-gold hover:underline">
+                Sign up
+              </a>
+            </p>
+          </div>
         </CardContent>
       </Card>
     </div>
