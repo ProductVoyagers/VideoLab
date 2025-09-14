@@ -1,7 +1,6 @@
-import { useState, useRef } from "react";
-import { Upload, X, File } from "lucide-react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { formatFileSize } from "@/lib/utils";
+import { X, FileUp } from "lucide-react";
 
 interface FileUploadProps {
   onFilesChange: (files: File[]) => void;
@@ -9,101 +8,90 @@ interface FileUploadProps {
   acceptedTypes?: string[];
 }
 
-export default function FileUpload({ onFilesChange, maxFiles = 10, acceptedTypes }: FileUploadProps) {
+export default function FileUpload({
+  onFilesChange,
+  maxFiles = 1,
+  acceptedTypes = [],
+}: FileUploadProps) {
   const [files, setFiles] = useState<File[]>([]);
-  const [isDragOver, setIsDragOver] = useState(false);
-  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleFileSelect = (selectedFiles: FileList | null) => {
-    if (!selectedFiles) return;
-    
-    const newFiles = Array.from(selectedFiles).filter(file => {
-      if (acceptedTypes && !acceptedTypes.some(type => file.type.startsWith(type))) {
-        return false;
-      }
-      return !files.some(existingFile => 
-        existingFile.name === file.name && existingFile.size === file.size
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      const newFiles = Array.from(e.target.files);
+      const filteredFiles = newFiles.filter(file =>
+        acceptedTypes.length > 0 ? acceptedTypes.some(type => file.type.startsWith(type) || type === "application/zip") : true
       );
-    });
-    
-    const updatedFiles = [...files, ...newFiles].slice(0, maxFiles);
-    setFiles(updatedFiles);
-    onFilesChange(updatedFiles);
+      const allFiles = [...files, ...filteredFiles];
+      if (allFiles.length > maxFiles) {
+        setError(`You can only upload a maximum of ${maxFiles} files.`);
+        return;
+      }
+      setFiles(allFiles);
+      onFilesChange(allFiles);
+      setError(null);
+    }
   };
 
-  const removeFile = (index: number) => {
-    const updatedFiles = files.filter((_, i) => i !== index);
-    setFiles(updatedFiles);
-    onFilesChange(updatedFiles);
-  };
-
-  const handleDragOver = (e: React.DragEvent) => {
+  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
-    setIsDragOver(true);
+    const newFiles = Array.from(e.dataTransfer.files);
+    const filteredFiles = newFiles.filter(file =>
+        acceptedTypes.length > 0 ? acceptedTypes.some(type => file.type.startsWith(type) || type === "application/zip") : true
+    );
+    const allFiles = [...files, ...filteredFiles];
+    if (allFiles.length > maxFiles) {
+        setError(`You can only upload a maximum of ${maxFiles} files.`);
+        return;
+    }
+    setFiles(allFiles);
+    onFilesChange(allFiles);
+    setError(null);
   };
 
-  const handleDragLeave = (e: React.DragEvent) => {
-    e.preventDefault();
-    setIsDragOver(false);
-  };
-
-  const handleDrop = (e: React.DragEvent) => {
-    e.preventDefault();
-    setIsDragOver(false);
-    handleFileSelect(e.dataTransfer.files);
+  const handleRemoveFile = (index: number) => {
+    const newFiles = [...files];
+    newFiles.splice(index, 1);
+    setFiles(newFiles);
+    onFilesChange(newFiles);
   };
 
   return (
     <div className="space-y-4">
       <div
-        className={`border-2 border-dashed rounded-xl p-12 text-center transition-colors cursor-pointer ${
-          isDragOver ? 'border-cinema-gold bg-cinema-gold/10' : 'border-gray-600 hover:border-cinema-gold'
-        }`}
-        onDragOver={handleDragOver}
-        onDragLeave={handleDragLeave}
+        className="border-2 border-dashed border-gray-600 rounded-lg p-8 text-center cursor-pointer hover:border-cinema-gold transition-colors"
         onDrop={handleDrop}
-        onClick={() => fileInputRef.current?.click()}
+        onDragOver={(e) => e.preventDefault()}
+        onClick={() => document.getElementById(`file-input-${acceptedTypes.join('-')}`)?.click()}
       >
-        <Upload className="mx-auto h-16 w-16 text-gray-500 mb-4" />
-        <p className="text-xl font-semibold text-gray-300 mb-2">Drag & drop your files here</p>
-        <p className="text-gray-500 mb-4">or click to browse</p>
-        <p className="text-sm text-gray-600">
-          Supported formats: MP4, MOV, PDF, DOC, JPG, PNG
+        <FileUp className="mx-auto h-12 w-12 text-gray-400" />
+        <p className="mt-4 text-gray-400">
+          Drag & drop your files here or click to browse
         </p>
         <input
-          ref={fileInputRef}
+          id={`file-input-${acceptedTypes.join('-')}`}
           type="file"
-          multiple
+          multiple={maxFiles > 1}
+          onChange={handleFileChange}
           className="hidden"
-          accept=".mp4,.mov,.pdf,.doc,.docx,.jpg,.jpeg,.png"
-          onChange={(e) => handleFileSelect(e.target.files)}
+          accept={acceptedTypes.join(",")}
         />
       </div>
-
-      {files.length > 0 && (
-        <div className="space-y-3">
-          <h4 className="font-semibold text-gray-300">Uploaded Files:</h4>
-          {files.map((file, index) => (
-            <div key={index} className="flex items-center justify-between bg-cinema-slate rounded-lg p-3">
-              <div className="flex items-center space-x-3">
-                <File className="text-cinema-gold h-5 w-5" />
-                <div>
-                  <p className="text-white text-sm">{file.name}</p>
-                  <p className="text-gray-400 text-xs">{formatFileSize(file.size)}</p>
-                </div>
-              </div>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => removeFile(index)}
-                className="text-red-400 hover:text-red-300 hover:bg-red-400/10"
-              >
-                <X className="h-4 w-4" />
-              </Button>
-            </div>
-          ))}
-        </div>
-      )}
+      {error && <p className="text-red-500 text-sm">{error}</p>}
+      <div className="space-y-2">
+        {files.map((file, index) => (
+          <div key={index} className="flex items-center justify-between bg-cinema-slate p-2 rounded-lg">
+            <p className="text-sm text-white">{file.name}</p>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => handleRemoveFile(index)}
+            >
+              <X className="h-4 w-4" />
+            </Button>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

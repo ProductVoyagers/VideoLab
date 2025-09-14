@@ -12,11 +12,12 @@ import { supabase } from "@/lib/supabaseClient";
 import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/hooks/useAuth";
 import FileUpload from "@/components/ui/file-upload";
+import { v4 as uuidv4 } from "uuid";
 
 const productSchema = z.object({
   name: z.string().min(1, "Product name is required"),
   description: z.string().optional(),
-  price: z.preprocess((a) => parseInt(z.string().parse(a), 10), z.number().positive("Price must be a positive number")),
+  price: z.preprocess((a) => parseFloat(z.string().parse(a)), z.number().positive("Price must be a positive number")),
 });
 
 export default function UploadProductPage() {
@@ -47,8 +48,10 @@ export default function UploadProductPage() {
 
     // 1. Upload zip file
     const zipFilePath = `${user.id}/${zipFile.name}`;
-    const { error: zipError } = await supabase.storage.from("products").upload(zipFilePath, zipFile);
-    if (zipError) {
+    const { error: zipError } = await supabase.storage.from("products").upload(zipFilePath, zipFile, {
+      upsert: true,
+    });
+    if (zipError && zipError.message !== "The resource already exists") {
       toast({ title: "Error uploading zip file.", description: zipError.message, variant: "destructive" });
       return;
     }
@@ -57,8 +60,10 @@ export default function UploadProductPage() {
     const imageUrls: string[] = [];
     for (const image of images) {
       const imagePath = `${user.id}/${image.name}`;
-      const { error: imageError } = await supabase.storage.from("product_images").upload(imagePath, image);
-      if (imageError) {
+      const { error: imageError } = await supabase.storage.from("product_images").upload(imagePath, image, {
+        upsert: true,
+      });
+      if (imageError && imageError.message !== "The resource already exists") {
         toast({ title: `Error uploading ${image.name}.`, description: imageError.message, variant: "destructive" });
         continue;
       }
@@ -70,11 +75,12 @@ export default function UploadProductPage() {
     const { data: productData, error: productError } = await supabase
       .from("products")
       .insert({
-        userId: user.id,
+        id: uuidv4(),
+        user_id: user.id,
         name: values.name,
         description: values.description,
-        price: values.price,
-        zipFileUrl: zipFilePath,
+        price: Math.round(values.price * 100), // Convert to cents
+        zip_file_url: zipFilePath,
       })
       .select()
       .single();
@@ -86,7 +92,8 @@ export default function UploadProductPage() {
 
     // 4. Insert product images into database
     const imageInserts = imageUrls.map((url) => ({
-      productId: productData.id,
+      id: uuidv4(),
+      product_id: productData.id,
       url,
     }));
 
@@ -147,9 +154,9 @@ export default function UploadProductPage() {
                 name="price"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Price (in cents)</FormLabel>
+                    <FormLabel>Price (SAR)</FormLabel>
                     <FormControl>
-                      <Input type="number" {...field} className="bg-cinema-slate border-gray-600 focus:border-cinema-gold" />
+                      <Input type="number" step="0.01" {...field} className="bg-cinema-slate border-gray-600 focus:border-cinema-gold" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -158,12 +165,12 @@ export default function UploadProductPage() {
               
               <FormItem>
                 <FormLabel>Product Images (up to 3)</FormLabel>
-                <FileUpload onFilesChange={(files) => setImages(files)} maxFiles={3} acceptedTypes={["image/"]} />
+                <FileUpload onFilesChange={setImages} maxFiles={3} acceptedTypes={["image/"]} />
               </FormItem>
 
               <FormItem>
                 <FormLabel>Product File (ZIP)</FormLabel>
-                <FileUpload onFilesChange={(files) => setZipFile(files[0])} maxFiles={1} acceptedTypes={["application/zip"]} />
+                <FileUpload onFilesChange={(files) => setZipFile(files[0] || null)} maxFiles={1} acceptedTypes={["application/zip"]} />
               </FormItem>
 
               <Button type="submit" className="w-full gold-gradient text-cinema-dark font-semibold">
